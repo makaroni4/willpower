@@ -1,11 +1,19 @@
 <template>
-  <div class="app">
+  <div class="oh-really-settings">
     <h1>Patterns</h1>
 
     <div
       v-for="pattern in patterns"
-      :key="pattern">
+      :key="pattern"
+      class="oh-really-settings__input">
+
       <TextInput v-model="pattern.value" />
+
+      <a
+        href="#"
+        @click.prevent="removePattern(pattern.value)">
+        Delete
+      </a>
     </div>
 
     <div>
@@ -44,6 +52,11 @@ export default {
         value: ""
       });
     },
+    removePattern(value) {
+      const index = this.patterns.findIndex(p => p.value === value);
+
+      this.patterns.splice(index, 1);
+    },
     saveSettings() {
       writeData({
         "patterns": this.patterns.filter(el => !!el.value)
@@ -64,6 +77,13 @@ export default {
 </script>
 
 <style lang="scss">
-.app {
+.oh-really-settings {
+  &__input {
+    display: flex;
+    max-width: $px496;
+  }
+
+  &__pattern {
+  }
 }
 </style>

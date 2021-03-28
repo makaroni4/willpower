@@ -10,9 +10,10 @@
 - [x] Move chrome logic into a module
 - [] Extension options page
   - [x] Implement Save button
-  - [] Allow deletion of websites
-  - [] Allow editing of websites
+  - [x] Allow deletion of websites
+  - [x] Allow editing of websites
   - [] Add config for button copy, motivational quote and timer value
+  - [] Add popup "Saved" when settings are saved
 - [] Extension popup final design
 - [] Extension popup design
 - [] Fix ES lint
