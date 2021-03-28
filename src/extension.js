@@ -8,7 +8,7 @@ anchor.id = "oh-really-mega-app";
 
 document.body.appendChild(anchor);
 
-chrome.storage.sync.get(["proceedCount", "fuckItCount", "patterns"], data => {
+chrome.storage.sync.get(["proceedCount", "fuckItCount", "shownCount", "patterns"], data => {
   const patterns = (data.patterns || []).map(p => p.value.replaceAll(".", "\\.").replaceAll("*", ".*"));
   const matchedPattern = patterns.find(pattern => {
     const regex = new RegExp(pattern);
@@ -21,7 +21,8 @@ chrome.storage.sync.get(["proceedCount", "fuckItCount", "patterns"], data => {
       render: (h) => h(ScreenWall, {
         props: {
           proceedCount: data.proceedCount || 0,
-          fuckItCount: data.fuckItCount || 0
+          fuckItCount: data.fuckItCount || 0,
+          shownCount: data.shownCount || 0
         }
       }),
     }).$mount("#oh-really-mega-app");

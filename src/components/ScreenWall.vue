@@ -2,6 +2,7 @@
   <div class="oh-really-popup">
     <h1>Oh Really?!</h1>
 
+    <div>Shown count: {{ shownCount }}</div>
     <div>Nasty websites: {{ proceedCount }}</div>
     <div>You: {{ fuckItCount }}</div>
 
@@ -38,7 +39,8 @@ export default {
   },
   props: {
     proceedCount: Number,
-    fuckItCount: Number
+    fuckItCount: Number,
+    shownCount: Number
   },
   methods: {
     handleProceed() {
@@ -67,6 +69,11 @@ export default {
         window.location = "https://makaroni4.com"
       });
     }
+  },
+  mounted() {
+    chrome.storage.sync.set({
+      "shownCount": this.shownCount + 1
+    });
   }
 };
 </script>
