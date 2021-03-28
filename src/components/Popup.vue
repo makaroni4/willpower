@@ -1,6 +1,8 @@
 <template>
   <div class="oh-really-popup">
-    <h1>THIS IS A POPUP</h1>
+    <h1>Oh Really?!</h1>
+
+    <a target="_blank" href="/options.html">Options</a>
   </div>
 </template>
 
@@ -8,7 +10,8 @@
 export default {
   name: "HelloWorld",
   props: {
-    msg: String,
+    proceedCount: Number,
+    fuckItCount: Number
   },
 };
 </script>
