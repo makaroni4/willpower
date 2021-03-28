@@ -16,13 +16,21 @@ const showScreenWall = (data, matchedPattern) => {
         proceedCount: data.proceedCount || 0,
         fuckItCount: data.fuckItCount || 0,
         shownCount: data.shownCount || 0,
-        pattern: matchedPattern
+        pattern: matchedPattern,
+        proceedTimer: data.proceedTimer || 15
       }
     }),
   }).$mount("#oh-really-mega-app");
 };
 
-const STORAGE_KEYS = ["proceedCount", "fuckItCount", "shownCount", "patterns", "activePatterns"];
+const STORAGE_KEYS = [
+  "proceedCount",
+  "fuckItCount",
+  "shownCount",
+  "patterns",
+  "activePatterns",
+  "proceedTimer"
+];
 const MAX_BROWSING_TIME = 15; // min
 
 readData(STORAGE_KEYS, data => {
@@ -50,7 +58,7 @@ readData(STORAGE_KEYS, data => {
 
         showScreenWall(data, matchedPattern);
       }
-      const now = new Date();
+      const now = (new Date()).getTime();
 
       if((now - activeAt) / 1000 / 60 > MAX_BROWSING_TIME) {
         showScreenWall(data, matchedPattern);

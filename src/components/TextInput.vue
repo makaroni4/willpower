@@ -1,6 +1,6 @@
 <template>
   <input
-    type="text"
+    :type="type"
     v-bind:value="value"
     v-on:input="$emit('input', $event.target.value)"
     class="oh-really-text-input">
@@ -10,7 +10,11 @@
 export default {
   name: "TextInput",
   props: {
-    value: String
+    value: String,
+    type: {
+      type: String,
+      default: "text"
+    }
   }
 }
 </script>

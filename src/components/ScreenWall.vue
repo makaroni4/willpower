@@ -34,7 +34,7 @@ export default {
   },
   data() {
     return {
-      timeLeft: 10,
+      timeLeft: 15,
       timerInterval: null
     }
   },
@@ -42,7 +42,8 @@ export default {
     proceedCount: Number,
     fuckItCount: Number,
     shownCount: Number,
-    pattern: String
+    pattern: String,
+    proceedTimer: Number
   },
   methods: {
     handleProceed() {
@@ -56,10 +57,10 @@ export default {
             this.$destroy();
             this.$el.parentNode.removeChild(this.$el);
 
-            getData(["activePatterns"], data => {
+            readData(["activePatterns"], data => {
               const activePatterns = data.activePatterns || {};
               const now = new Date();
-              activePatterns[this.pattern] = now.toString();
+              activePatterns[this.pattern] = now.getTime();
 
               writeData({
                 "activePatterns": activePatterns
@@ -86,6 +87,8 @@ export default {
     writeData({
       "shownCount": this.shownCount + 1
     });
+
+    this.timeLeft = this.proceedTimer;
   }
 };
 </script>

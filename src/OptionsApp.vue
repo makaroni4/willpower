@@ -1,25 +1,37 @@
 <template>
   <div class="oh-really-settings">
-    <h1>Patterns</h1>
+    <h1>Settings</h1>
 
-    <div
-      v-for="pattern in patterns"
-      :key="pattern"
-      class="oh-really-settings__input">
+    <div class="oh-really-settings__section">
+      <h2>URL patterns</h2>
 
-      <TextInput v-model="pattern.value" />
+      <div
+        v-for="pattern in patterns"
+        :key="pattern"
+        class="oh-really-settings__input">
 
-      <a
-        href="#"
-        @click.prevent="removePattern(pattern.value)">
-        Delete
-      </a>
+        <Input v-model="pattern.value" />
+
+        <a
+          href="#"
+          @click.prevent="removePattern(pattern.value)">
+          Delete
+        </a>
+      </div>
+
+      <div>
+        <Button
+          @click.prevent="addPattern"
+          :label="'Add pattern'">
+      </div>
     </div>
 
-    <div>
-      <Button
-        @click.prevent="addPattern"
-        :label="'Add pattern'">
+    <div class="oh-really-settings__section">
+      <h2>Screen wall settings</h2>
+
+      <Input
+        :type="'number'"
+        v-model="proceedTimer" />
     </div>
 
     <div>
@@ -31,19 +43,20 @@
 </template>
 
 <script>
-import TextInput from "./components/TextInput";
+import Input from "./components/TextInput";
 import Button from "./components/Button";
 import { readData, writeData } from "./assets/modules/chrome";
 
 export default {
   name: "OptionsApp",
   components: {
-    TextInput,
+    Input,
     Button
   },
   data() {
     return {
-      patterns: []
+      patterns: [],
+      proceedTimer: null
     }
   },
   methods: {
@@ -59,14 +72,16 @@ export default {
     },
     saveSettings() {
       writeData({
-        "patterns": this.patterns.filter(el => !!el.value)
+        "patterns": this.patterns.filter(el => !!el.value),
+        "proceedTimer": parseInt(this.proceedTimer, 10)
       }, () => {
         this.refreshSettings()
       });
     },
     refreshSettings() {
-      readData(["patterns"], results => {
-        this.patterns = (results.patterns || []);
+      readData(["patterns", "proceedTimer"], results => {
+        this.patterns = results.patterns || [];
+        this.proceedTimer = results.proceedTimer || 15; // sec
       })
     }
   },
@@ -81,6 +96,12 @@ export default {
   &__input {
     display: flex;
     max-width: $px496;
+  }
+
+  &__section {
+    &:not(:last-child) {
+      margin-bottom: $px32;
+    }
   }
 
   &__pattern {

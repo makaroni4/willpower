@@ -12,7 +12,9 @@
   - [x] Implement Save button
   - [x] Allow deletion of websites
   - [x] Allow editing of websites
-  - [] Add config for button copy, motivational quote and timer value
+  - [] Add config for button copy
+  - [] Add config for motivational quote
+  - [] Add config for timer value
   - [] Add popup "Saved" when settings are saved
 - [] Extension popup final design
 - [] Extension popup design
