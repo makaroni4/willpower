@@ -9,8 +9,12 @@ anchor.id = "oh-really-mega-app";
 document.body.appendChild(anchor);
 
 chrome.storage.sync.get(["proceedCount", "fuckItCount", "patterns"], data => {
-  const patterns = (data.patterns || []).map(p => p.value);
-  const matchedPattern = patterns.find(pattern => location.host.includes(pattern));
+  const patterns = (data.patterns || []).map(p => p.value.replaceAll(".", "\\.").replaceAll("*", ".*"));
+  const matchedPattern = patterns.find(pattern => {
+    const regex = new RegExp(pattern);
+
+    return regex.test(window.location.href);
+  });
 
   if(matchedPattern) {
     new Vue({

@@ -1,5 +1,6 @@
 <template>
   <button
+    @click="$emit('click', $event);"
     class="oh-really-button">
     {{ label }}
   </button>
