@@ -25,6 +25,7 @@
 
 <script>
 import Button from "./Button";
+import { readData, writeData } from "../assets/modules/chrome";
 
 export default {
   name: "ScreenWall",
@@ -33,14 +34,15 @@ export default {
   },
   data() {
     return {
-      timeLeft: 30,
+      timeLeft: 10,
       timerInterval: null
     }
   },
   props: {
     proceedCount: Number,
     fuckItCount: Number,
-    shownCount: Number
+    shownCount: Number,
+    pattern: String
   },
   methods: {
     handleProceed() {
@@ -48,11 +50,21 @@ export default {
         if (this.timeLeft == 0) {
           clearTimeout(this.timerInterval);
 
-          chrome.storage.sync.set({
+          writeData({
             "proceedCount": this.proceedCount + 1
           }, () => {
             this.$destroy();
             this.$el.parentNode.removeChild(this.$el);
+
+            getData(["activePatterns"], data => {
+              const activePatterns = data.activePatterns || {};
+              const now = new Date();
+              activePatterns[this.pattern] = now.toString();
+
+              writeData({
+                "activePatterns": activePatterns
+              });
+            });
           });
 
         } else {
@@ -63,7 +75,7 @@ export default {
       this.timerInterval = setInterval(countdown, 1000);
     },
     handleFuckIt() {
-      chrome.storage.sync.set({
+      writeData({
         "fuckItCount": this.fuckItCount + 1
       }, () => {
         window.location = "https://makaroni4.com"
@@ -71,7 +83,7 @@ export default {
     }
   },
   mounted() {
-    chrome.storage.sync.set({
+    writeData({
       "shownCount": this.shownCount + 1
     });
   }

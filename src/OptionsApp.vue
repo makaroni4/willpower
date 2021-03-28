@@ -17,6 +17,7 @@
 <script>
 import TextInput from "./components/TextInput";
 import Button from "./components/Button";
+import { readData, writeData } from "./assets/modules/chrome";
 
 export default {
   name: "OptionsApp",
@@ -31,7 +32,7 @@ export default {
   },
   watch: {
     patterns: function() {
-      chrome.storage.sync.set({
+      writeData({
         "patterns": this.patterns.filter(el => !!el.value)
       });
     }
@@ -44,7 +45,7 @@ export default {
     }
   },
   mounted() {
-    chrome.storage.sync.get(["patterns"], results => {
+    readData(["patterns"], results => {
       this.patterns = (results.patterns || []);
     })
   }

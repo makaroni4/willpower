@@ -5,9 +5,8 @@
 - [x] Add scoped SCSS support
 - [x] Design system
 - [x] Implement simple pattern matching with * for any symbol, like google.com*NBA
-- [] Count popup shown, rejections and skips
-- [] Store counts only for the last 30 days
-- [] When proceed allow 30min browsing without screen wall
+- [x] Count popup shown, rejections and skips
+- [x] When proceed allow 30 min browsing without screen wall
 - [] Move chrome logic into a module
 - [] Extension popup final design
 - [] Extension options page

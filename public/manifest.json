@@ -42,7 +42,10 @@
   "options_page": "options.html",
   "web_accessible_resources": [{
     "resources": [
-      "fonts/Roboto-Regular.ttf",
+      "fonts/Mulish-Regular.ttf",
+      "fonts/Mulish-ExtraBold.ttf",
+      "fonts/Mulish-Italic.ttf",
+      "fonts/Mulish-ExtraBoldItalic.ttf",
       "css/style.css",
       "images/edit-regular.svg"
     ],
