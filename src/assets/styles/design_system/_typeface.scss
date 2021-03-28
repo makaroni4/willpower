@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 400;
+  src: url("chrome-extension://__MSG_@@extension_id__/fonts/Mulish-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 800;
+  src: url("chrome-extension://__MSG_@@extension_id__/fonts/Mulish-ExtraBold.ttf");
+}
+
+@font-face {
+  font-family: "Mulish";
+  font-style: italic;
+  font-weight: 400;
+  src: url("chrome-extension://__MSG_@@extension_id__/fonts/Mulish-Italic.ttf");
+}
+
+@font-face {
+  font-family: "Mulish";
+  font-style: italic;
+  font-weight: 800;
+  src: url("chrome-extension://__MSG_@@extension_id__/fonts/Mulish-ExtraBoldItalic.ttf");
+}
