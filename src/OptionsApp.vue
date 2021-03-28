@@ -8,9 +8,17 @@
       <TextInput v-model="pattern.value" />
     </div>
 
-    <Button
-      @click.prevent="addPattern"
-      :label="'Add pattern'">
+    <div>
+      <Button
+        @click.prevent="addPattern"
+        :label="'Add pattern'">
+    </div>
+
+    <div>
+      <Button
+        @click.prevent="saveSettings"
+        :label="'Save settings'">
+    </div>
   </div>
 </template>
 
@@ -30,24 +38,27 @@ export default {
       patterns: []
     }
   },
-  watch: {
-    patterns: function() {
-      writeData({
-        "patterns": this.patterns.filter(el => !!el.value)
-      });
-    }
-  },
   methods: {
     addPattern() {
       this.patterns.push({
         value: ""
       });
+    },
+    saveSettings() {
+      writeData({
+        "patterns": this.patterns.filter(el => !!el.value)
+      }, () => {
+        this.refreshSettings()
+      });
+    },
+    refreshSettings() {
+      readData(["patterns"], results => {
+        this.patterns = (results.patterns || []);
+      })
     }
   },
   mounted() {
-    readData(["patterns"], results => {
-      this.patterns = (results.patterns || []);
-    })
+    this.refreshSettings()
   }
 };
 </script>
