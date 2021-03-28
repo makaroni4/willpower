@@ -11,15 +11,23 @@
     </div>
 
     <div>
-      <button @click.prevent="handleProceed">Yes, really</button>
-      <button @click.prevent="handleFuckIt">F**k it</button>
+      <button
+        class="btn"
+        @click.prevent="handleProceed">
+        Yes, really
+      </button>
+      <button
+        class="btn"
+        @click.prevent="handleFuckIt">
+        F**k it
+      </button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "ScreenWall",
   data() {
     return {
       timeLeft: 30,

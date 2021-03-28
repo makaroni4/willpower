@@ -11,6 +11,7 @@
     </div>
 
     <button
+      class="btn"
       @click.prevent="addPattern">
       Add pattern
     </button>

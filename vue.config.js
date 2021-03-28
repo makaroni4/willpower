@@ -22,5 +22,14 @@ module.exports = {
   filenameHashing: false,
   chainWebpack: config => { // https://forum.vuejs.org/t/disable-code-splitting-in-vue-cli-3/36295/8
     config.optimization.splitChunks(false);
+  },
+  css: {
+    loaderOptions: {
+      sass: {
+        data: `
+          @import "@/assets/styles/_design_system.scss";
+        `
+      }
+    }
   }
 };

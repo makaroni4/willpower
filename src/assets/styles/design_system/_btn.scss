@@ -1,0 +1,26 @@
+.btn {
+  $root: &;
+
+  display: inline-block;
+  padding: 15px $px12;
+
+  border-radius: $px4;
+  outline: none;
+  border: $px1 solid transparent;
+
+  background-color: $blue-5;
+
+  font-family: "Muli", sans-serif;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  color: $white;
+
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: $blue-6;
+    opacity: 1;
+  }
+}
