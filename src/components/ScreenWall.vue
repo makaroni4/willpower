@@ -11,23 +11,25 @@
     </div>
 
     <div>
-      <button
-        class="btn"
-        @click.prevent="handleProceed">
-        Yes, really
-      </button>
-      <button
-        class="btn"
-        @click.prevent="handleFuckIt">
-        F**k it
-      </button>
+      <Button
+        @click.prevent="handleFuckIt"
+        :label="'F**k it'" />
+
+      <Button
+        @click.prevent="handleProceed"
+        :label="'Yes, really'" />
     </div>
   </div>
 </template>
 
 <script>
+import Button from "./Button";
+
 export default {
   name: "ScreenWall",
+  components: {
+    Button
+  },
   data() {
     return {
       timeLeft: 30,

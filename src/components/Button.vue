@@ -1,4 +1,21 @@
-.btn {
+<template>
+  <button
+    class="oh-really-button">
+    {{ label }}
+  </button>
+</template>
+
+<script>
+export default {
+  name: "Button",
+  props: {
+    label: String
+  }
+}
+</script>
+
+<style lang="scss">
+.oh-really-button {
   $root: &;
 
   display: inline-block;
@@ -24,3 +41,4 @@
     opacity: 1;
   }
 }
+</style>

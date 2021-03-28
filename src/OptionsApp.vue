@@ -5,23 +5,24 @@
     <div
       v-for="pattern in patterns"
       :key="pattern">
-      <input
-        type="text"
-        v-model="pattern.value">
+      <TextInput v-model="pattern.value" />
     </div>
 
-    <button
-      class="btn"
-      @click.prevent="addPattern">
-      Add pattern
-    </button>
+    <Button
+      @click.prevent="addPattern"
+      :label="'Add pattern'">
   </div>
 </template>
 
 <script>
+import TextInput from "./components/TextInput";
+import Button from "./components/Button";
+
 export default {
   name: "OptionsApp",
   components: {
+    TextInput,
+    Button
   },
   data() {
     return {
