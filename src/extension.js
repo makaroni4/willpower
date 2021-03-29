@@ -19,7 +19,8 @@ const showScreenWall = (data, matchedPattern) => {
         pattern: matchedPattern,
         proceedTimer: data.proceedTimer || 15,
         proceedButtonCopy: data.proceedButtonCopy || "Yes, really",
-        fuckItButtonCopy: data.fuckItButtonCopy || "F**k it!"
+        fuckItButtonCopy: data.fuckItButtonCopy || "F**k it!",
+        screenWallQuote: data.screenWallQuote || "You want to spend your time like that?"
       }
     }),
   }).$mount("#oh-really-mega-app");
@@ -33,7 +34,8 @@ const STORAGE_KEYS = [
   "activePatterns",
   "proceedTimer",
   "proceedButtonCopy",
-  "fuckItButtonCopy"
+  "fuckItButtonCopy",
+  "screenWallQuote"
 ];
 const MAX_BROWSING_TIME = 15; // min
 

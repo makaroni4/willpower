@@ -2,6 +2,10 @@
   <div class="oh-really-popup">
     <h1>Oh Really?!</h1>
 
+    <h3>
+      {{ screenWallQuote }}
+    </h3>
+
     <div>Shown count: {{ shownCount }}</div>
     <div>Nasty websites: {{ proceedCount }}</div>
     <div>You: {{ fuckItCount }}</div>
@@ -45,7 +49,8 @@ export default {
     pattern: String,
     proceedTimer: Number,
     proceedButtonCopy: String,
-    fuckItButtonCopy: String
+    fuckItButtonCopy: String,
+    screenWallQuote: String
   },
   methods: {
     handleProceed() {

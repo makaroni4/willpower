@@ -41,6 +41,10 @@
       <label>Close website button copy</label>
       <Input
         v-model="fuckItButtonCopy" />
+
+      <label>Screen wall quote</label>
+      <Input
+        v-model="screenWallQuote" />
     </div>
 
     <div>
@@ -67,7 +71,8 @@ export default {
       patterns: [],
       proceedTimer: null,
       proceedButtonCopy: null,
-      fuckItButtonCopy: null
+      fuckItButtonCopy: null,
+      screenWallQuote: null
     }
   },
   methods: {
@@ -86,17 +91,19 @@ export default {
         "patterns": this.patterns.filter(el => !!el.value),
         "proceedTimer": parseInt(this.proceedTimer, 10),
         "proceedButtonCopy": this.proceedButtonCopy,
-        "fuckItButtonCopy": this.fuckItButtonCopy
+        "fuckItButtonCopy": this.fuckItButtonCopy,
+        "screenWallQuote": this.screenWallQuote
       }, () => {
         this.refreshSettings()
       });
     },
     refreshSettings() {
-      readData(["patterns", "proceedTimer", "proceedButtonCopy", "fuckItButtonCopy"], results => {
+      readData(["patterns", "proceedTimer", "proceedButtonCopy", "fuckItButtonCopy", "screenWallQuote"], results => {
         this.patterns = results.patterns || [];
         this.proceedTimer = results.proceedTimer || 15; // sec
         this.proceedButtonCopy = results.proceedButtonCopy || "Yes, really";
         this.fuckItButtonCopy = results.fuckItButtonCopy || "F**k it";
+        this.screenWallQuote = results.screenWallQuote || "You want to spend your time like that?"
       })
     }
   },
