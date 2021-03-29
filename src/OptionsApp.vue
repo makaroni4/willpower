@@ -45,6 +45,10 @@
       <label>Screen wall quote</label>
       <Input
         v-model="screenWallQuote" />
+
+      <label>Redirect URL</label>
+      <Input
+        v-model="redirectUrl" />
     </div>
 
     <div>
@@ -72,7 +76,8 @@ export default {
       proceedTimer: null,
       proceedButtonCopy: null,
       fuckItButtonCopy: null,
-      screenWallQuote: null
+      screenWallQuote: null,
+      redirectUrl: null
     }
   },
   methods: {
@@ -92,18 +97,20 @@ export default {
         "proceedTimer": parseInt(this.proceedTimer, 10),
         "proceedButtonCopy": this.proceedButtonCopy,
         "fuckItButtonCopy": this.fuckItButtonCopy,
-        "screenWallQuote": this.screenWallQuote
+        "screenWallQuote": this.screenWallQuote,
+        "redirectUrl": this.redirectUrl
       }, () => {
         this.refreshSettings()
       });
     },
     refreshSettings() {
-      readData(["patterns", "proceedTimer", "proceedButtonCopy", "fuckItButtonCopy", "screenWallQuote"], results => {
+      readData(["patterns", "proceedTimer", "proceedButtonCopy", "fuckItButtonCopy", "screenWallQuote", "redirectUrl"], results => {
         this.patterns = results.patterns || [];
         this.proceedTimer = results.proceedTimer || 15; // sec
         this.proceedButtonCopy = results.proceedButtonCopy || "Yes, really";
         this.fuckItButtonCopy = results.fuckItButtonCopy || "F**k it";
         this.screenWallQuote = results.screenWallQuote || "You want to spend your time like that?"
+        this.redirectUrl = results.redirectUrl || "https://giphy.com/search/you-did-it"
       })
     }
   },

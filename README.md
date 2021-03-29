@@ -15,7 +15,8 @@
   - [x] Add config for timer value
   - [x] Add config for proceed button copy
   - [x] Add config for fuck it button copy
-  - [] Add config for motivational quote
+  - [x] Add config for motivational quote
+  - [] Add config for redirect URL
   - [] Add popup "Saved" when settings are saved
 - [] Extension popup final design
 - [] Extension popup design

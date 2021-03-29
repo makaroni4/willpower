@@ -50,7 +50,8 @@ export default {
     proceedTimer: Number,
     proceedButtonCopy: String,
     fuckItButtonCopy: String,
-    screenWallQuote: String
+    screenWallQuote: String,
+    redirectUrl: String
   },
   methods: {
     handleProceed() {
@@ -86,7 +87,7 @@ export default {
       writeData({
         "fuckItCount": this.fuckItCount + 1
       }, () => {
-        window.location = "https://makaroni4.com"
+        window.location = this.redirectUrl
       });
     }
   },

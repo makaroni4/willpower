@@ -20,7 +20,8 @@ const showScreenWall = (data, matchedPattern) => {
         proceedTimer: data.proceedTimer || 15,
         proceedButtonCopy: data.proceedButtonCopy || "Yes, really",
         fuckItButtonCopy: data.fuckItButtonCopy || "F**k it!",
-        screenWallQuote: data.screenWallQuote || "You want to spend your time like that?"
+        screenWallQuote: data.screenWallQuote || "You want to spend your time like that?",
+        redirectUrl: data.redirectUrl || "https://giphy.com/search/you-did-it"
       }
     }),
   }).$mount("#oh-really-mega-app");
@@ -35,7 +36,8 @@ const STORAGE_KEYS = [
   "proceedTimer",
   "proceedButtonCopy",
   "fuckItButtonCopy",
-  "screenWallQuote"
+  "screenWallQuote",
+  "redirectUrl"
 ];
 const MAX_BROWSING_TIME = 15; // min
 
