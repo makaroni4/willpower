@@ -14,11 +14,11 @@
     <div>
       <Button
         @click.prevent="handleFuckIt"
-        :label="'F**k it'" />
+        :label="fuckItButtonCopy" />
 
       <Button
         @click.prevent="handleProceed"
-        :label="'Yes, really'" />
+        :label="proceedButtonCopy" />
     </div>
   </div>
 </template>
@@ -43,7 +43,9 @@ export default {
     fuckItCount: Number,
     shownCount: Number,
     pattern: String,
-    proceedTimer: Number
+    proceedTimer: Number,
+    proceedButtonCopy: String,
+    fuckItButtonCopy: String
   },
   methods: {
     handleProceed() {

@@ -17,7 +17,9 @@ const showScreenWall = (data, matchedPattern) => {
         fuckItCount: data.fuckItCount || 0,
         shownCount: data.shownCount || 0,
         pattern: matchedPattern,
-        proceedTimer: data.proceedTimer || 15
+        proceedTimer: data.proceedTimer || 15,
+        proceedButtonCopy: data.proceedButtonCopy || "Yes, really",
+        fuckItButtonCopy: data.fuckItButtonCopy || "F**k it!"
       }
     }),
   }).$mount("#oh-really-mega-app");
@@ -29,7 +31,9 @@ const STORAGE_KEYS = [
   "shownCount",
   "patterns",
   "activePatterns",
-  "proceedTimer"
+  "proceedTimer",
+  "proceedButtonCopy",
+  "fuckItButtonCopy"
 ];
 const MAX_BROWSING_TIME = 15; // min
 
@@ -59,8 +63,13 @@ readData(STORAGE_KEYS, data => {
         showScreenWall(data, matchedPattern);
       }
       const now = (new Date()).getTime();
+      const lastShownInMinutes = (now - activeAt) / 1000 / 60;
 
-      if((now - activeAt) / 1000 / 60 > MAX_BROWSING_TIME) {
+      console.log("--> now ", now);
+      console.log("--> activeAt ", activeAt);
+      console.log("--> lastShownInMinutes ", lastShownInMinutes);
+
+      if(lastShownInMinutes > MAX_BROWSING_TIME) {
         showScreenWall(data, matchedPattern);
       }
     } else {

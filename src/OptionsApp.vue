@@ -29,9 +29,18 @@
     <div class="oh-really-settings__section">
       <h2>Screen wall settings</h2>
 
+      <label>Timer</label>
       <Input
         :type="'number'"
         v-model="proceedTimer" />
+
+      <label>Proceed button copy</label>
+      <Input
+        v-model="proceedButtonCopy" />
+
+      <label>Close website button copy</label>
+      <Input
+        v-model="fuckItButtonCopy" />
     </div>
 
     <div>
@@ -56,7 +65,9 @@ export default {
   data() {
     return {
       patterns: [],
-      proceedTimer: null
+      proceedTimer: null,
+      proceedButtonCopy: null,
+      fuckItButtonCopy: null
     }
   },
   methods: {
@@ -73,15 +84,19 @@ export default {
     saveSettings() {
       writeData({
         "patterns": this.patterns.filter(el => !!el.value),
-        "proceedTimer": parseInt(this.proceedTimer, 10)
+        "proceedTimer": parseInt(this.proceedTimer, 10),
+        "proceedButtonCopy": this.proceedButtonCopy,
+        "fuckItButtonCopy": this.fuckItButtonCopy
       }, () => {
         this.refreshSettings()
       });
     },
     refreshSettings() {
-      readData(["patterns", "proceedTimer"], results => {
+      readData(["patterns", "proceedTimer", "proceedButtonCopy", "fuckItButtonCopy"], results => {
         this.patterns = results.patterns || [];
         this.proceedTimer = results.proceedTimer || 15; // sec
+        this.proceedButtonCopy = results.proceedButtonCopy || "Yes, really";
+        this.fuckItButtonCopy = results.fuckItButtonCopy || "F**k it";
       })
     }
   },
