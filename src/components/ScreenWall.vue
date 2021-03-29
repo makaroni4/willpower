@@ -1,28 +1,38 @@
 <template>
   <div class="oh-really-popup">
-    <h1>Oh Really?!</h1>
+    <div class="oh-really-popup__container">
+      <h1>Oh Really?!</h1>
 
-    <h3>
-      {{ screenWallQuote }}
-    </h3>
+      <h3>
+        {{ screenWallQuote }}
+      </h3>
 
-    <div>Shown count: {{ shownCount }}</div>
-    <div>Nasty websites: {{ proceedCount }}</div>
-    <div>You: {{ fuckItCount }}</div>
+      <div
+        v-if="timerInterval">
+        {{ timeLeft }} seconds left. You still have a chance to win this! 💪
+      </div>
 
-    <div
-      v-if="timerInterval">
-      {{ timeLeft }} seconds left. You still have a chance to win this! 💪
+      <div class="oh-really-popup__actions">
+        <div class="oh-really-popup__fuck-it">
+          <Button
+            @click.prevent="handleFuckIt"
+            :label="fuckItButtonCopy" />
+        </div>
+
+        <a
+          class="oh-really-popup__proceed"
+          href="#"
+          @click.prevent="handleProceed">
+          {{ proceedButtonCopy }}
+        </a>
+      </div>
     </div>
 
-    <div>
-      <Button
-        @click.prevent="handleFuckIt"
-        :label="fuckItButtonCopy" />
-
-      <Button
-        @click.prevent="handleProceed"
-        :label="proceedButtonCopy" />
+    <div class="oh-really-popup__stats">
+      <h3>Stats</h3>
+      <div>Shown count: {{ shownCount }}</div>
+      <div>Nasty websites: {{ proceedCount }}</div>
+      <div>You: {{ fuckItCount }}</div>
     </div>
   </div>
 </template>
@@ -117,6 +127,11 @@ export default {
 
   font-family: "Muli", sans-serif;
 
+  &__container {
+    max-width: $px960;
+    margin: 0 auto;
+  }
+
   &__icon {
     width: 32px;
     height: 32px;
@@ -129,6 +144,23 @@ export default {
     color: #FFF;
 
     cursor: pointer;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+
+  &__proceed {
+    display: inline-block;
+    margin-left: $px8;
+  }
+
+  &__stats {
+    position: absolute;
+    bottom: $px32;
+    left: $px16;
+    z-index: 100000000;
   }
 }
 </style>
