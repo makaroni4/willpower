@@ -8,7 +8,7 @@
 - [x] Count popup shown, rejections and skips
 - [x] When proceed allow 30 min browsing without screen wall
 - [x] Move chrome logic into a module
-- [] Extension options page
+- [x] Extension options page
   - [x] Implement Save button
   - [x] Allow deletion of websites
   - [x] Allow editing of websites
@@ -17,10 +17,26 @@
   - [x] Add config for fuck it button copy
   - [x] Add config for motivational quote
   - [x] Add config for redirect URL
-  - [] Add basic markdown (** and *) for quote
-  - [] Add popup "Saved" when settings are saved
+  - [x] Add popup "Saved" when settings are saved
+- [] Extension screen wall final design
+  - [] Add logo
+  - [] Style quote
+  - [] Make proceed a link (the only CTA is F**k it)
+  - [] Show stats in the corner
+  - [] Add credits
+- [] Extension options page final design
+  - [] Final design for input fields
+  - [] Make quote a text area
+  - [] Animation for notification
+  - [] Make delete links a "x" icon
+  - [] Add bg color to the page
+  - [] Add logo
+  - [] Add Github link and feedback link (GH issues)
+  - [] Try 2 column design (1c for URLs, 1c for settings)
 - [] Extension popup final design
-- [] Extension popup design
+  - [] Add stats
+  - [] Make options page a button
+  - [] Add Github page link for Feedback
 - [] Fix ES lint
 - [] QA on all popular time killing websites
 - [] Make screenshots
