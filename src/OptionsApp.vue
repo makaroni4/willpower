@@ -56,19 +56,25 @@
         @click.prevent="saveSettings"
         :label="'Save settings'">
     </div>
+
+    <Notification
+      v-if="showNotification"
+      :copy="notificationCopy" />
   </div>
 </template>
 
 <script>
 import Input from "./components/TextInput";
 import Button from "./components/Button";
+import Notification from "./components/Notification";
 import { readData, writeData } from "./assets/modules/chrome";
 
 export default {
   name: "OptionsApp",
   components: {
     Input,
-    Button
+    Button,
+    Notification
   },
   data() {
     return {
@@ -77,7 +83,9 @@ export default {
       proceedButtonCopy: null,
       fuckItButtonCopy: null,
       screenWallQuote: null,
-      redirectUrl: null
+      redirectUrl: null,
+      showNotification: false,
+      notificationCopy: null
     }
   },
   methods: {
@@ -100,7 +108,14 @@ export default {
         "screenWallQuote": this.screenWallQuote,
         "redirectUrl": this.redirectUrl
       }, () => {
-        this.refreshSettings()
+        this.refreshSettings();
+
+        this.notificationCopy = "Your settings were saved";
+        this.showNotification = true;
+
+        setTimeout(() => {
+          this.showNotification = false;
+        }, 3000);
       });
     },
     refreshSettings() {

@@ -16,7 +16,8 @@
   - [x] Add config for proceed button copy
   - [x] Add config for fuck it button copy
   - [x] Add config for motivational quote
-  - [] Add config for redirect URL
+  - [x] Add config for redirect URL
+  - [] Add basic markdown (** and *) for quote
   - [] Add popup "Saved" when settings are saved
 - [] Extension popup final design
 - [] Extension popup design
