@@ -35,10 +35,11 @@
   - [ ] Add bg color to the page
   - [ ] Add logo
   - [ ] Add Github link and feedback link (GH issues)
-  - [ ] Try 2 column design (1c for URLs, 1c for settings)
-- [ ] Extension popup final design
+  - [x] Try 2 column design (1c for URLs, 1c for settings)
+  - [x] Add tabs
+- [x] Extension popup final design
   - [x] Add stats
-  - [ ] Add Github page link for Feedback
+  - [x] Add Github page link for Feedback
 - [ ] Default extension values
 - [ ] Fix ES lint
 - [ ] QA on all popular time killing websites

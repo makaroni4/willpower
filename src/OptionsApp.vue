@@ -2,9 +2,29 @@
   <div class="oh-really-settings oh-really-design-system">
     <h1>Settings</h1>
 
-    <div class="oh-really-settings__section">
-      <h2>URL patterns</h2>
+    <div class="oh-really-settings__tabs">
+      <div
+        class="oh-really-settings__tab"
+        :class="{
+          'oh-really-settings__tab--active': tab === 'patterns'
+        }"
+        @click.prevent="tab = 'patterns'">
+        URL patterns
+      </div>
 
+      <div
+        class="oh-really-settings__tab"
+        :class="{
+          'oh-really-settings__tab--active': tab === 'screenwall'
+        }"
+        @click.prevent="tab = 'screenwall'">
+        Screen wall settings
+      </div>
+    </div>
+
+    <section
+      class="oh-really-settings__section"
+      v-if="tab === 'patterns'">
       <div
         v-for="pattern in patterns"
         :key="pattern"
@@ -22,11 +42,17 @@
       <div>
         <Button
           @click.prevent="addPattern"
-          :label="'Add pattern'">
-      </div>
-    </div>
+          :label="'Add pattern'" />
 
-    <div class="oh-really-settings__section">
+        <Button
+          @click.prevent="saveSettings"
+          :label="'Save settings'" />
+      </div>
+    </section>
+
+    <section
+      class="oh-really-settings__section"
+      v-if="tab === 'screenwall'">
       <h2>Screen wall settings</h2>
 
       <label>Timer</label>
@@ -49,13 +75,11 @@
       <label>Redirect URL</label>
       <Input
         v-model="redirectUrl" />
-    </div>
 
-    <div>
       <Button
         @click.prevent="saveSettings"
-        :label="'Save settings'">
-    </div>
+        :label="'Save settings'" />
+    </section>
 
     <Notification
       v-if="showNotification"
@@ -78,6 +102,7 @@ export default {
   },
   data() {
     return {
+      tab: "patterns",
       patterns: [],
       proceedTimer: null,
       proceedButtonCopy: null,
@@ -142,13 +167,22 @@ export default {
     max-width: $px496;
   }
 
-  &__section {
-    &:not(:last-child) {
-      margin-bottom: $px32;
-    }
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: $px24;
   }
 
-  &__pattern {
+  &__tabs {
+    margin-bottom: $px24;
+  }
+
+  &__tab {
+    cursor: pointer;
+
+    &--active {
+      font-weight: 800;
+    }
   }
 }
 </style>
