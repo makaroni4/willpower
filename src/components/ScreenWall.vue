@@ -1,6 +1,10 @@
 <template>
   <div class="oh-really-popup oh-really-design-system">
-    <div class="oh-really-popup__logo" />
+    <div
+      class="oh-really-popup__logo"
+      :class="{
+        'oh-really-popup__logo--animated': timerInterval
+      }" />
 
     <div class="oh-really-popup__body">
       <div
@@ -35,25 +39,29 @@
     <div class="oh-really-popup__menu">
       <a
         target="_blank"
-        @click.prevent="window.open(chrome.runtime.getURL('options.html'));"
-        href="#">
+        class="font-small"
+        :href="optionsPageUrl">
         Settings
       </a>
 
       <a
+        class="font-small"
         target="_blank"
         href="https://github.com/makaroni4/willpower/issues">
         Feedback
       </a>
 
       <a
+        class="font-small"
         target="_blank"
         href="https://github.com/makaroni4/willpower">
         Source code
       </a>
     </div>
 
-    <div class="oh-really-popup__stats">
+    <div
+      v-if="showStats"
+      class="oh-really-popup__stats">
       <div class="oh-really-popup__stat oh-really-popup__stat--blue">
         <Tooltip
           :copy="`Shown count: ${shownCount}`" />
@@ -109,6 +117,12 @@ export default {
       return this.screenWallQuote
         .replace(/[\*\_]{2}([^\*\_]+)[\*\_]{2}/g, '<strong>$1</strong>')
         .replace(/[\*\_]{1}([^\*\_]+)[\*\_]{1}/g, '<i>$1</i>');
+    },
+    optionsPageUrl() {
+      return chrome.runtime.getURL("options.html");
+    },
+    showStats() {
+      return (this.proceedCount || 0) > 0 || (this.fuckItCount || 0) > 0;
     }
   },
   methods: {
@@ -160,6 +174,33 @@ export default {
 </script>
 
 <style lang="scss">
+@keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  25% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  60% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  100% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+
 .oh-really-popup {
   $root: &;
 
@@ -207,6 +248,10 @@ export default {
     background-image: url("chrome-extension://__MSG_@@extension_id__/images/logo.svg") !important;
     background-repeat: no-repeat;
     background-size: cover;
+
+    &--animated {
+      animation: breathing 5s ease-out infinite normal;
+    }
   }
 
   &__actions {
@@ -268,13 +313,12 @@ export default {
   &__menu {
     position: absolute;
     bottom: $px32;
-    right: $px16;
+    right: $px32;
     z-index: 100000000;
     display: flex;
 
     a {
-      font-size: 12px;
-      color: $grey-7;
+      color: $grey-6;
 
       &:not(:last-child) {
         margin-right: $px16;

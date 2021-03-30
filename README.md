@@ -18,7 +18,6 @@
   - [x] Add config for motivational quote
   - [x] Add config for redirect URL
   - [x] Add popup "Saved" when settings are saved
-  - [ ] Add button to reset all counters
 - [ ] Extension screen wall final design
   - [x] Add logo
   - [x] Add basic emoji support
