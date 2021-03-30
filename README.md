@@ -19,31 +19,31 @@
   - [x] Add config for redirect URL
   - [x] Add popup "Saved" when settings are saved
   - [ ] Add button to reset all counters
-- [] Extension screen wall final design
+- [ ] Extension screen wall final design
   - [x] Add logo
-  - [] Add basic emoji support
+  - [x] Add basic emoji support
   - [x] Style quote, add basic markdown
   - [x] Make proceed a link (the only CTA is F**k it)
   - [x] Show stats in the corner
-  - [] Add credits
-  - [] Normalize for all websites
-  - [] Replace quote with timer copy when proceed
-- [] Extension options page final design
-  - [] Final design for input fields
-  - [] Make quote a text area
-  - [] Animation for notification
-  - [] Make delete links a "x" icon
-  - [] Add bg color to the page
-  - [] Add logo
-  - [] Add Github link and feedback link (GH issues)
-  - [] Try 2 column design (1c for URLs, 1c for settings)
-- [] Extension popup final design
+  - [ ] Add credits
+  - [ ] Replace quote with timer copy when proceed
+  - [x] Normalize for all websites
+- [ ] Extension options page final design
+  - [ ] Final design for input fields
+  - [ ] Make quote a text area
+  - [ ] Animation for notification
+  - [ ] Make delete links a "x" icon
+  - [ ] Add bg color to the page
+  - [ ] Add logo
+  - [ ] Add Github link and feedback link (GH issues)
+  - [ ] Try 2 column design (1c for URLs, 1c for settings)
+- [ ] Extension popup final design
   - [x] Add stats
-  - [] Make options page a button
-  - [] Add Github page link for Feedback
-- [] Fix ES lint
-- [] QA on all popular time killing websites
-- [] Make screenshots
-- [] Create Chrome page
-- [] Create Firefox page
-- [] Create README file
+  - [ ] Make options page a button
+  - [ ] Add Github page link for Feedback
+- [ ] Fix ES lint
+- [ ] QA on all popular time killing websites
+- [ ] Make screenshots
+- [ ] Create Chrome page
+- [ ] Create Firefox page
+- [ ] Create README file

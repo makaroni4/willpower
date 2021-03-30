@@ -5,12 +5,14 @@
     <div class="oh-really-popup__body">
       <div
         class="oh-really-popup__quote"
-        v-html="formattedQuote" />
+        v-if="timerInterval">
+        <strong>{{ timeLeft }} seconds left</strong>. You still have a chance to win this!
+      </div>
 
       <div
-        v-if="timerInterval">
-        {{ timeLeft }} seconds left. You still have a chance to win this! 💪
-      </div>
+        v-else
+        class="oh-really-popup__quote"
+        v-html="formattedQuote" />
 
       <div class="oh-really-popup__actions">
         <div class="oh-really-popup__fuck-it">
@@ -21,12 +23,34 @@
         </div>
 
         <a
+          v-if="!timerInterval"
           class="oh-really-popup__proceed"
           href="#"
           @click.prevent="handleProceed">
           {{ proceedButtonCopy }}
         </a>
       </div>
+    </div>
+
+    <div class="oh-really-popup__menu">
+      <a
+        target="_blank"
+        @click.prevent="window.open(chrome.runtime.getURL('options.html'));"
+        href="#">
+        Settings
+      </a>
+
+      <a
+        target="_blank"
+        href="https://github.com/makaroni4/willpower/issues">
+        Feedback
+      </a>
+
+      <a
+        target="_blank"
+        href="https://github.com/makaroni4/willpower">
+        Source code
+      </a>
     </div>
 
     <div class="oh-really-popup__stats">
@@ -237,6 +261,23 @@ export default {
     &:hover {
       .oh-really-tooltip {
         display: block;
+      }
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    bottom: $px32;
+    right: $px16;
+    z-index: 100000000;
+    display: flex;
+
+    a {
+      font-size: 12px;
+      color: $grey-7;
+
+      &:not(:last-child) {
+        margin-right: $px16;
       }
     }
   }
