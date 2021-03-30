@@ -45,6 +45,9 @@ export default {
   text-align: center;
   text-transform: uppercase;
   color: $white;
+  font-size: 17px !important;
+  line-height: 1.5 !important;
+  font-weight: 400 !important;
 
   cursor: pointer;
   transition: all 0.3s;

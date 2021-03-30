@@ -20,9 +20,9 @@
   - [x] Add popup "Saved" when settings are saved
   - [ ] Add button to reset all counters
 - [] Extension screen wall final design
-  - [] Add logo
+  - [x] Add logo
   - [] Add basic emoji support
-  - [] Style quote, add basic markdown
+  - [x] Style quote, add basic markdown
   - [x] Make proceed a link (the only CTA is F**k it)
   - [x] Show stats in the corner
   - [] Add credits

@@ -1,52 +1,67 @@
 <template>
   <div class="oh-really-popup oh-really-design-system">
-    <div class="oh-really-popup__container">
-      <div class="oh-really-popup__body">
-        <div class="oh-really-popup__logo" />
+    <div class="oh-really-popup__logo" />
 
-        <div
-          class="oh-really-popup__quote"
-          v-html="formattedQuote" />
+    <div class="oh-really-popup__body">
+      <div
+        class="oh-really-popup__quote"
+        v-html="formattedQuote" />
 
-        <div
-          v-if="timerInterval">
-          {{ timeLeft }} seconds left. You still have a chance to win this! 💪
+      <div
+        v-if="timerInterval">
+        {{ timeLeft }} seconds left. You still have a chance to win this! 💪
+      </div>
+
+      <div class="oh-really-popup__actions">
+        <div class="oh-really-popup__fuck-it">
+          <Button
+            :modifiers="['fat']"
+            @click.prevent="handleFuckIt"
+            :label="fuckItButtonCopy" />
         </div>
 
-        <div class="oh-really-popup__actions">
-          <div class="oh-really-popup__fuck-it">
-            <Button
-              :modifiers="['fat']"
-              @click.prevent="handleFuckIt"
-              :label="fuckItButtonCopy" />
-          </div>
-
-          <a
-            class="oh-really-popup__proceed"
-            href="#"
-            @click.prevent="handleProceed">
-            {{ proceedButtonCopy }}
-          </a>
-        </div>
+        <a
+          class="oh-really-popup__proceed"
+          href="#"
+          @click.prevent="handleProceed">
+          {{ proceedButtonCopy }}
+        </a>
       </div>
     </div>
 
     <div class="oh-really-popup__stats">
-      <div>Shown count: {{ shownCount }}</div>
-      <div>Nasty websites: {{ proceedCount }}</div>
-      <div>You: {{ fuckItCount }}</div>
+      <div class="oh-really-popup__stat oh-really-popup__stat--blue">
+        <Tooltip
+          :copy="`Shown count: ${shownCount}`" />
+      </div>
+
+      <div
+        class="oh-really-popup__stat oh-really-popup__stat--red"
+        :style="`width: ${Math.round(100 * proceedCount / shownCount)}%;`">
+        <Tooltip
+          :copy="`Nasty websites: ${proceedCount}`" />
+      </div>
+
+      <div
+        class="oh-really-popup__stat oh-really-popup__stat--green"
+        :style="`width: ${Math.round(100 * fuckItCount / shownCount)}%;`">
+        <Tooltip
+          :copy="`You: ${fuckItCount}`" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Button from "./Button";
+import Tooltip from "./Tooltip";
 import { readData, writeData } from "../assets/modules/chrome";
 
 export default {
   name: "ScreenWall",
   components: {
-    Button
+    Button,
+    Tooltip
   },
   data() {
     return {
@@ -122,6 +137,8 @@ export default {
 
 <style lang="scss">
 .oh-really-popup {
+  $root: &;
+
   position: fixed;
   top: 0;
   left: 0;
@@ -132,17 +149,14 @@ export default {
 
   border-radius: 0 0 8px 0;
 
-  background-color: #FFB088;
+  background-color: $grey-9;
 
   font-family: "Muli", sans-serif;
   color: $grey-1;
 
-  &__container {
+  &__body {
     max-width: $px720;
     margin: 0 auto;
-  }
-
-  &__body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -150,6 +164,7 @@ export default {
   }
 
   &__quote {
+    display: block;
     margin-bottom: $px24;
 
     font-size: 44px;
@@ -161,19 +176,19 @@ export default {
     top: $px16;
     left: $px16;
     z-index: 100000000;
-    width: 102px;
-    height: 48px;
+    width: $px48;
+    height: $px48;
     display: block;
 
     background-image: url("chrome-extension://__MSG_@@extension_id__/images/logo.svg") !important;
     background-repeat: no-repeat;
-
-    cursor: pointer;
+    background-size: cover;
   }
 
   &__actions {
     display: flex;
     align-items: center;
+    flex-direction: row;
   }
 
   &__proceed {
@@ -186,6 +201,44 @@ export default {
     bottom: $px32;
     left: $px16;
     z-index: 100000000;
+  }
+
+  &__stat {
+    display: flex;
+    align-items: center;
+    height: $px12;
+    width: $px144;
+    position: relative;
+
+    &--blue {
+      background-color: $blue-8;
+
+      &:hover {
+        background-color: $blue-7;
+      }
+    }
+
+    &--red {
+      background-color: $red-8;
+
+      &:hover {
+        background-color: $red-7;
+      }
+    }
+
+    &--green {
+      background-color: $green-8;
+
+      &:hover {
+        background-color: $green-7;
+      }
+    }
+
+    &:hover {
+      .oh-really-tooltip {
+        display: block;
+      }
+    }
   }
 }
 </style>

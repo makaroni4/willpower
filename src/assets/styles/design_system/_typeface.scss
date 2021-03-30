@@ -52,10 +52,20 @@
   }
 
   a {
+    font-size: 17px !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important;
     color: $grey-1;
+    text-decoration: underline;
 
     &:hover {
       color: $grey-3;
     }
   }
+
+  i {
+    font-style: italic;
+  }
+
+  font-family: "Mulish" !important;
 }
