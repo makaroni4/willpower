@@ -47,7 +47,7 @@
       "fonts/Mulish-Italic.ttf",
       "fonts/Mulish-ExtraBoldItalic.ttf",
       "css/style.css",
-      "images/edit-regular.svg"
+      "images/logo.svg"
     ],
     "matches": ["https://*/*"]
   }]

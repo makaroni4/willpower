@@ -2,6 +2,8 @@
   <div class="oh-really-popup oh-really-design-system">
     <div class="oh-really-popup__container">
       <div class="oh-really-popup__body">
+        <div class="oh-really-popup__logo" />
+
         <div
           class="oh-really-popup__quote"
           v-html="formattedQuote" />
@@ -135,14 +137,6 @@ export default {
   font-family: "Muli", sans-serif;
   color: $grey-1;
 
-  a {
-    color: $grey-1;
-
-    &:hover {
-      color: $grey-3;
-    }
-  }
-
   &__container {
     max-width: $px720;
     margin: 0 auto;
@@ -162,16 +156,17 @@ export default {
     line-height: 56px;
   }
 
-  &__icon {
-    width: 32px;
-    height: 32px;
+  &__logo {
+    position: absolute;
+    top: $px16;
+    left: $px16;
+    z-index: 100000000;
+    width: 102px;
+    height: 48px;
     display: block;
 
     background-image: url("chrome-extension://__MSG_@@extension_id__/images/logo.svg") !important;
     background-repeat: no-repeat;
-    background-position: center;
-
-    color: #FFF;
 
     cursor: pointer;
   }

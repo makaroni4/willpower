@@ -50,4 +50,12 @@
     line-height: 36px;
     font-weight: 500;
   }
+
+  a {
+    color: $grey-1;
+
+    &:hover {
+      color: $grey-3;
+    }
+  }
 }
