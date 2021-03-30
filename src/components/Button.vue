@@ -1,7 +1,7 @@
 <template>
   <button
     @click="$emit('click', $event);"
-    class="oh-really-button">
+    :class="cssClass">
     {{ label }}
   </button>
 </template>
@@ -10,7 +10,19 @@
 export default {
   name: "Button",
   props: {
-    label: String
+    label: String,
+    modifiers: {
+      type: Array,
+      default: () => []
+    }
+  },
+  computed: {
+    cssClass() {
+      let basicClass = "oh-really-button";
+      let modifiers = this.modifiers.map(m => `${basicClass}--${m}`).join(" ");
+
+      return `${basicClass} ${modifiers}`;
+    }
   }
 }
 </script>
@@ -40,6 +52,12 @@ export default {
   &:hover {
     background-color: $blue-6;
     opacity: 1;
+  }
+
+  &--fat {
+    padding: $px24 $px24;
+
+    font-size: $px16;
   }
 }
 </style>

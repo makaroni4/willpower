@@ -1,5 +1,5 @@
 <template>
-  <div class="oh-really-settings">
+  <div class="oh-really-settings oh-really-design-system">
     <h1>Settings</h1>
 
     <div class="oh-really-settings__section">

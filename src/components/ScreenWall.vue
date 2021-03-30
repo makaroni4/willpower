@@ -1,35 +1,35 @@
 <template>
-  <div class="oh-really-popup">
+  <div class="oh-really-popup oh-really-design-system">
     <div class="oh-really-popup__container">
-      <h1>Oh Really?!</h1>
+      <div class="oh-really-popup__body">
+        <div
+          class="oh-really-popup__quote"
+          v-html="formattedQuote" />
 
-      <h3>
-        {{ screenWallQuote }}
-      </h3>
-
-      <div
-        v-if="timerInterval">
-        {{ timeLeft }} seconds left. You still have a chance to win this! 💪
-      </div>
-
-      <div class="oh-really-popup__actions">
-        <div class="oh-really-popup__fuck-it">
-          <Button
-            @click.prevent="handleFuckIt"
-            :label="fuckItButtonCopy" />
+        <div
+          v-if="timerInterval">
+          {{ timeLeft }} seconds left. You still have a chance to win this! 💪
         </div>
 
-        <a
-          class="oh-really-popup__proceed"
-          href="#"
-          @click.prevent="handleProceed">
-          {{ proceedButtonCopy }}
-        </a>
+        <div class="oh-really-popup__actions">
+          <div class="oh-really-popup__fuck-it">
+            <Button
+              :modifiers="['fat']"
+              @click.prevent="handleFuckIt"
+              :label="fuckItButtonCopy" />
+          </div>
+
+          <a
+            class="oh-really-popup__proceed"
+            href="#"
+            @click.prevent="handleProceed">
+            {{ proceedButtonCopy }}
+          </a>
+        </div>
       </div>
     </div>
 
     <div class="oh-really-popup__stats">
-      <h3>Stats</h3>
       <div>Shown count: {{ shownCount }}</div>
       <div>Nasty websites: {{ proceedCount }}</div>
       <div>You: {{ fuckItCount }}</div>
@@ -62,6 +62,13 @@ export default {
     fuckItButtonCopy: String,
     screenWallQuote: String,
     redirectUrl: String
+  },
+  computed: {
+    formattedQuote() {
+      return this.screenWallQuote
+        .replace(/[\*\_]{2}([^\*\_]+)[\*\_]{2}/g, '<strong>$1</strong>')
+        .replace(/[\*\_]{1}([^\*\_]+)[\*\_]{1}/g, '<i>$1</i>');
+    }
   },
   methods: {
     handleProceed() {
@@ -126,10 +133,33 @@ export default {
   background-color: #FFB088;
 
   font-family: "Muli", sans-serif;
+  color: $grey-1;
+
+  a {
+    color: $grey-1;
+
+    &:hover {
+      color: $grey-3;
+    }
+  }
 
   &__container {
-    max-width: $px960;
+    max-width: $px720;
     margin: 0 auto;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: $px192;
+  }
+
+  &__quote {
+    margin-bottom: $px24;
+
+    font-size: 44px;
+    line-height: 56px;
   }
 
   &__icon {
@@ -137,7 +167,7 @@ export default {
     height: 32px;
     display: block;
 
-    background-image: url("chrome-extension://__MSG_@@extension_id__/images/edit-regular.svg") !important;
+    background-image: url("chrome-extension://__MSG_@@extension_id__/images/logo.svg") !important;
     background-repeat: no-repeat;
     background-position: center;
 
@@ -153,7 +183,7 @@ export default {
 
   &__proceed {
     display: inline-block;
-    margin-left: $px8;
+    margin-left: $px16;
   }
 
   &__stats {

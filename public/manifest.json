@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Oh Really",
-  "description": "Browser Extension that helps you being focused",
+  "name": "Willpower",
+  "description": "Browser Extension that helps you stay focused",
   "version": "1.0",
   "author": "Anatoli Makarevich",
   "icons": {

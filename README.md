@@ -21,11 +21,13 @@
   - [ ] Add button to reset all counters
 - [] Extension screen wall final design
   - [] Add logo
-  - [] Style quote
-  - [] Make proceed a link (the only CTA is F**k it)
-  - [] Show stats in the corner
+  - [] Add basic emoji support
+  - [] Style quote, add basic markdown
+  - [x] Make proceed a link (the only CTA is F**k it)
+  - [x] Show stats in the corner
   - [] Add credits
   - [] Normalize for all websites
+  - [] Replace quote with timer copy when proceed
 - [] Extension options page final design
   - [] Final design for input fields
   - [] Make quote a text area
@@ -36,7 +38,7 @@
   - [] Add Github link and feedback link (GH issues)
   - [] Try 2 column design (1c for URLs, 1c for settings)
 - [] Extension popup final design
-  - [] Add stats
+  - [x] Add stats
   - [] Make options page a button
   - [] Add Github page link for Feedback
 - [] Fix ES lint
