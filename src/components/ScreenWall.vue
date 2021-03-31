@@ -122,7 +122,7 @@ export default {
       return chrome.runtime.getURL("options.html");
     },
     showStats() {
-      return (this.proceedCount || 0) > 0 || (this.fuckItCount || 0) > 0;
+      return (this.proceedCount || 0) > 0 && (this.fuckItCount || 0) > 0;
     }
   },
   methods: {

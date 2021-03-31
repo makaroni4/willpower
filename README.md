@@ -47,3 +47,4 @@
 - [ ] Create Chrome page
 - [ ] Create Firefox page
 - [ ] Create README file
+- [ ] Record screencast
