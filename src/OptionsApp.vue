@@ -99,7 +99,7 @@
 
             <div class="oh-really-settings__input">
               <label>Screen wall quote</label>
-              <Input
+              <Textarea
                 v-model="screenWallQuote" />
             </div>
 
@@ -127,6 +127,7 @@
 
 <script>
 import Input from "./components/TextInput";
+import Textarea from "./components/Textarea";
 import Button from "./components/Button";
 import Notification from "./components/Notification";
 import { readData, writeData } from "./assets/modules/chrome";
@@ -136,7 +137,8 @@ export default {
   components: {
     Input,
     Button,
-    Notification
+    Notification,
+    Textarea
   },
   data() {
     return {
