@@ -1,92 +1,99 @@
 <template>
   <div class="oh-really-settings oh-really-design-system">
-    <h1>Settings</h1>
+    <div class="oh-really-settings__container">
+      <header class="oh-really-settings__header">
+        <div class="oh-really-settings__logo oh-really-settings__logo--animated" />
+        <strong>WILLPOWER</strong>
+      </header>
 
-    <div class="oh-really-settings__tabs-wrapper">
-      <div
-        class="oh-really-settings__tabs"
-        :class="`oh-really-settings__tabs--${tab}`">
-        <div
-          class="oh-really-settings__tab"
-          :class="{
-            'oh-really-settings__tab--active': tab === 'patterns'
-          }"
-          @click.prevent="tab = 'patterns'">
-          URL patterns
-        </div>
+      <h1>Settings</h1>
 
+      <div class="oh-really-settings__tabs-wrapper">
         <div
-          class="oh-really-settings__tab"
-          :class="{
-            'oh-really-settings__tab--active': tab === 'screenwall'
-          }"
-          @click.prevent="tab = 'screenwall'">
-          Screen wall settings
+          class="oh-really-settings__tabs"
+          :class="`oh-really-settings__tabs--${tab}`">
+          <div
+            class="oh-really-settings__tab"
+            :class="{
+              'oh-really-settings__tab--active': tab === 'patterns'
+            }"
+            @click.prevent="tab = 'patterns'">
+            URL patterns
+          </div>
+
+          <div
+            class="oh-really-settings__tab"
+            :class="{
+              'oh-really-settings__tab--active': tab === 'screenwall'
+            }"
+            @click.prevent="tab = 'screenwall'">
+            Screen wall settings
+          </div>
         </div>
       </div>
-    </div>
 
-    <transition name="component-fade" mode="out-in">
-      <section
-        class="oh-really-settings__section"
-        :key="'patterns'"
-        v-if="tab === 'patterns'">
-        <div
-          v-for="pattern in patterns"
-          :key="pattern"
-          class="oh-really-settings__input">
+      <transition name="component-fade" mode="out-in">
+        <section
+          class="oh-really-settings__section"
+          :key="'patterns'"
+          v-if="tab === 'patterns'">
+          <div
+            v-for="pattern in patterns"
+            :key="pattern"
+            class="oh-really-settings__input">
 
-          <Input v-model="pattern.value" />
+            <Input v-model="pattern.value" />
 
-          <a
-            href="#"
-            @click.prevent="removePattern(pattern.value)">
-            Delete
-          </a>
-        </div>
+            <a
+              href="#"
+              @click.prevent="removePattern(pattern.value)">
+              Delete
+            </a>
+          </div>
 
-        <div>
-          <Button
-            @click.prevent="addPattern"
-            :label="'Add pattern'" />
+          <div>
+            <Button
+              @click.prevent="addPattern"
+              :label="'Add pattern'" />
+
+            <Button
+              @click.prevent="saveSettings"
+              :label="'Save settings'" />
+          </div>
+        </section>
+
+        <section
+          class="oh-really-settings__section"
+          :key="'screenwall'"
+          v-if="tab === 'screenwall'">
+
+          <label>Timer</label>
+          <Input
+            :type="'number'"
+            v-model="proceedTimer" />
+
+          <label>Proceed button copy</label>
+          <Input
+            v-model="proceedButtonCopy" />
+
+          <label>Close website button copy</label>
+          <Input
+            v-model="fuckItButtonCopy" />
+
+          <label>Screen wall quote</label>
+          <Input
+            v-model="screenWallQuote" />
+
+          <label>Redirect URL</label>
+          <Input
+            v-model="redirectUrl" />
 
           <Button
             @click.prevent="saveSettings"
             :label="'Save settings'" />
-        </div>
-      </section>
-
-      <section
-        class="oh-really-settings__section"
-        :key="'screenwall'"
-        v-if="tab === 'screenwall'">
-
-        <label>Timer</label>
-        <Input
-          :type="'number'"
-          v-model="proceedTimer" />
-
-        <label>Proceed button copy</label>
-        <Input
-          v-model="proceedButtonCopy" />
-
-        <label>Close website button copy</label>
-        <Input
-          v-model="fuckItButtonCopy" />
-
-        <label>Screen wall quote</label>
-        <Input
-          v-model="screenWallQuote" />
-
-        <label>Redirect URL</label>
-        <Input
-          v-model="redirectUrl" />
-
-        <Button
-          @click.prevent="saveSettings"
-          :label="'Save settings'" />
-      </section>
-    </transition>
+        </section>
+      </transition>
+    </div>
 
     <Notification
       v-if="showNotification"
@@ -168,6 +175,32 @@ export default {
 </script>
 
 <style lang="scss">
+@keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  25% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  60% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  100% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
 .component-fade-enter-active, .component-fade-leave-active {
   transition: opacity .2s ease;
 }
@@ -177,6 +210,34 @@ export default {
 }
 
 .oh-really-settings {
+  &__container {
+    max-width: $px960;
+    margin: 0 auto;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: $px32;
+    padding: $px8 0;
+  }
+
+  &__logo {
+    width: $px32;
+    height: $px32;
+    display: block;
+    margin-right: $px16;
+
+    background-image: url("chrome-extension://__MSG_@@extension_id__/images/logo.svg") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &--animated {
+      animation: breathing 5s ease-out infinite normal;
+    }
+  }
+
   &__input {
     display: flex;
     max-width: $px496;
@@ -202,6 +263,11 @@ export default {
     flex-direction: row;
     position: relative;
     width: $px496;
+    padding: $px4;
+
+    border-radius: $px32;
+
+    background-color: $grey-10;
 
     &--patterns {
       &:after {
