@@ -37,25 +37,35 @@
           class="oh-really-settings__section"
           :key="'patterns'"
           v-if="tab === 'patterns'">
-          <div
-            v-for="pattern in patterns"
-            :key="pattern"
-            class="oh-really-settings__input">
 
-            <Input v-model="pattern.value" />
+          <div class="oh-really-settings__section-body">
+            <div
+              v-for="pattern in patterns"
+              :key="pattern"
+              class="oh-really-settings__input">
+
+              <Input
+                v-model="pattern.value" />
+
+              <img
+                @click.prevent="removePattern(pattern.value)"
+                src="./assets/images/minus-circle-solid.svg"
+                class="oh-really-settings__input-minus-icon">
+            </div>
 
             <a
-              href="#"
-              @click.prevent="removePattern(pattern.value)">
-              Delete
+              class="oh-really-settings__add-pattern"
+              @click.prevent="addPattern"
+              href="#">
+              <img
+                src="./assets/images/plus-circle-solid.svg"
+                class="oh-really-settings__input-plus-icon">
+
+              Add patterns
             </a>
           </div>
 
-          <div>
-            <Button
-              @click.prevent="addPattern"
-              :label="'Add pattern'" />
-
+          <div class="oh-really-settings__section-actions">
             <Button
               @click.prevent="saveSettings"
               :label="'Save settings'" />
@@ -67,30 +77,44 @@
           :key="'screenwall'"
           v-if="tab === 'screenwall'">
 
-          <label>Timer</label>
-          <Input
-            :type="'number'"
-            v-model="proceedTimer" />
+          <div class="oh-really-settings__section-body">
+            <div class="oh-really-settings__input">
+              <label>Timer</label>
+              <Input
+                :type="'number'"
+                v-model="proceedTimer" />
+            </div>
 
-          <label>Proceed button copy</label>
-          <Input
-            v-model="proceedButtonCopy" />
+            <div class="oh-really-settings__input">
+              <label>Proceed button copy</label>
+              <Input
+                v-model="proceedButtonCopy" />
+              </div>
 
-          <label>Close website button copy</label>
-          <Input
-            v-model="fuckItButtonCopy" />
+            <div class="oh-really-settings__input">
+              <label>Close website button copy</label>
+              <Input
+                v-model="fuckItButtonCopy" />
+            </div>
 
-          <label>Screen wall quote</label>
-          <Input
-            v-model="screenWallQuote" />
+            <div class="oh-really-settings__input">
+              <label>Screen wall quote</label>
+              <Input
+                v-model="screenWallQuote" />
+            </div>
 
-          <label>Redirect URL</label>
-          <Input
-            v-model="redirectUrl" />
+            <div class="oh-really-settings__input">
+              <label>Redirect URL</label>
+              <Input
+                v-model="redirectUrl" />
+            </div>
+          </div>
 
-          <Button
-            @click.prevent="saveSettings"
-            :label="'Save settings'" />
+          <div class="oh-really-settings__section-actions">
+            <Button
+              @click.prevent="saveSettings"
+              :label="'Save settings'" />
+          </div>
         </section>
       </transition>
     </div>
@@ -239,8 +263,29 @@ export default {
   }
 
   &__input {
-    display: flex;
     max-width: $px496;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: $px16;
+    }
+  }
+
+  &__input-plus-icon {
+    width: $px16;
+    height: $px16;
+    margin-right: $px8;
+  }
+
+  &__input-minus-icon {
+    width: $px16;
+    height: $px16;
+    position: absolute;
+    right: $px16;
+    top: 50%;
+    transform: translateY(-50%);
+
+    cursor: pointer;
   }
 
   &__body {
@@ -312,6 +357,15 @@ export default {
       color: $white;
       font-weight: 800;
     }
+  }
+
+  &__section-body {
+    margin-bottom: $px24;
+  }
+
+  &__add-pattern {
+    font-size: $px12;
+    line-height: 1;
   }
 }
 </style>

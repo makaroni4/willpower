@@ -22,7 +22,7 @@ export default {
 <style lang="scss">
 .oh-really-text-input {
   width: 100%;
-  padding: $px8;
+  padding: $px12;
 
   border: $px2 solid $grey-7;
   border-radius: $px4;
