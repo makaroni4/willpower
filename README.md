@@ -29,12 +29,12 @@
   - [x] Responsive markup
 - [ ] Extension options page final design
   - [ ] Final design for input fields
-  - [ ] Make quote a text area
-  - [ ] Animation for notification
-  - [ ] Make delete links a "x" icon
   - [ ] Add bg color to the page
-  - [ ] Add logo
-  - [ ] Add Github link and feedback link (GH issues)
+  - [x] Add Github link and feedback link (GH issues)
+  - [x] Animation for notification
+  - [x] Make quote a text area
+  - [x] Make delete links a "x" icon
+  - [x] Add logo
   - [x] Try 2 column design (1c for URLs, 1c for settings)
   - [x] Add tabs
 - [x] Extension popup final design

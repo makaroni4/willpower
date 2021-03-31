@@ -22,7 +22,7 @@ export default {
   top: $px24;
   right: $px24;
   padding: $px16;
-  width: $px320;
+  max-width: $px320;
 
   border-radius: $px4;
 

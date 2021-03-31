@@ -119,9 +119,27 @@
       </transition>
     </div>
 
-    <Notification
-      v-if="showNotification"
-      :copy="notificationCopy" />
+    <transition name="slide-fade">
+      <Notification
+        v-if="showNotification"
+        :copy="notificationCopy" />
+    </transition>
+
+    <div class="oh-really-settings__menu">
+      <a
+        class="font-small"
+        target="_blank"
+        href="https://github.com/makaroni4/willpower/issues">
+        <strong>Feedback</strong>
+      </a>
+
+      <a
+        class="font-small"
+        target="_blank"
+        href="https://github.com/makaroni4/willpower">
+        <strong>Source code</strong>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -227,6 +245,24 @@ export default {
   }
 }
 
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+  transition: all .4s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX($px32);
+  opacity: 0;
+}
+
+.slide-fade-leave-to {
+  opacity: 0;
+}
+
 .component-fade-enter-active, .component-fade-leave-active {
   transition: opacity .2s ease;
 }
@@ -236,6 +272,8 @@ export default {
 }
 
 .oh-really-settings {
+  padding-bottom: $px72;
+
   &__container {
     max-width: $px960;
     margin: 0 auto;
@@ -368,6 +406,18 @@ export default {
   &__add-pattern {
     font-size: $px12;
     line-height: 1;
+  }
+
+  &__menu {
+    position: fixed;
+    right: $px16;
+    bottom: $px16;
+
+    a {
+      &:not(:last-child) {
+        margin-right: $px16;
+      }
+    }
   }
 }
 </style>
