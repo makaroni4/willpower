@@ -2,7 +2,6 @@
   <div class="oh-really-settings oh-really-design-system">
     <h1>Settings</h1>
 
-
     <div class="oh-really-settings__tabs-wrapper">
       <div
         class="oh-really-settings__tabs"
@@ -27,64 +26,67 @@
       </div>
     </div>
 
-    <section
-      class="oh-really-settings__section"
-      v-if="tab === 'patterns'">
-      <div
-        v-for="pattern in patterns"
-        :key="pattern"
-        class="oh-really-settings__input">
+    <transition name="component-fade" mode="out-in">
+      <section
+        class="oh-really-settings__section"
+        :key="'patterns'"
+        v-if="tab === 'patterns'">
+        <div
+          v-for="pattern in patterns"
+          :key="pattern"
+          class="oh-really-settings__input">
 
-        <Input v-model="pattern.value" />
+          <Input v-model="pattern.value" />
 
-        <a
-          href="#"
-          @click.prevent="removePattern(pattern.value)">
-          Delete
-        </a>
-      </div>
+          <a
+            href="#"
+            @click.prevent="removePattern(pattern.value)">
+            Delete
+          </a>
+        </div>
 
-      <div>
-        <Button
-          @click.prevent="addPattern"
-          :label="'Add pattern'" />
+        <div>
+          <Button
+            @click.prevent="addPattern"
+            :label="'Add pattern'" />
+
+          <Button
+            @click.prevent="saveSettings"
+            :label="'Save settings'" />
+        </div>
+      </section>
+
+      <section
+        class="oh-really-settings__section"
+        :key="'screenwall'"
+        v-if="tab === 'screenwall'">
+
+        <label>Timer</label>
+        <Input
+          :type="'number'"
+          v-model="proceedTimer" />
+
+        <label>Proceed button copy</label>
+        <Input
+          v-model="proceedButtonCopy" />
+
+        <label>Close website button copy</label>
+        <Input
+          v-model="fuckItButtonCopy" />
+
+        <label>Screen wall quote</label>
+        <Input
+          v-model="screenWallQuote" />
+
+        <label>Redirect URL</label>
+        <Input
+          v-model="redirectUrl" />
 
         <Button
           @click.prevent="saveSettings"
           :label="'Save settings'" />
-      </div>
-    </section>
-
-    <section
-      class="oh-really-settings__section"
-      v-if="tab === 'screenwall'">
-      <h2>Screen wall settings</h2>
-
-      <label>Timer</label>
-      <Input
-        :type="'number'"
-        v-model="proceedTimer" />
-
-      <label>Proceed button copy</label>
-      <Input
-        v-model="proceedButtonCopy" />
-
-      <label>Close website button copy</label>
-      <Input
-        v-model="fuckItButtonCopy" />
-
-      <label>Screen wall quote</label>
-      <Input
-        v-model="screenWallQuote" />
-
-      <label>Redirect URL</label>
-      <Input
-        v-model="redirectUrl" />
-
-      <Button
-        @click.prevent="saveSettings"
-        :label="'Save settings'" />
-    </section>
+      </section>
+    </transition>
 
     <Notification
       v-if="showNotification"
@@ -166,6 +168,14 @@ export default {
 </script>
 
 <style lang="scss">
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .2s ease;
+}
+
+.component-fade-enter, .component-fade-leave-to {
+  opacity: 0;
+}
+
 .oh-really-settings {
   &__input {
     display: flex;
@@ -180,8 +190,6 @@ export default {
 
   &__tabs-wrapper {
     border-radius: $px32;
-    background-color: $grey-9;
-    padding: 8px;
     width: 100%;
     max-width: $px496;
     margin-bottom: $px24;
@@ -212,7 +220,7 @@ export default {
       position: absolute;
       width: 50%;
       top: 0;
-      transition: left cubic-bezier(.88, -.35, .565, 1.35) .4s;
+      transition: left cubic-bezier(.88, -.35, .565, 1.35) .3s;
       border-radius: 27.5px;
       box-shadow: 0 2px 15px 0 rgba(0, 0, 0, .1);
       background-color: $blue-6;
@@ -227,7 +235,7 @@ export default {
     padding: $px12 0;
     z-index: 1;
     position: relative;
-    transition: color 200ms;
+    transition: color 0.3s;
 
     color: $blue-6;
     text-align: center;
