@@ -40,21 +40,21 @@
           target="_blank"
           class="font-small"
           href="options.html">
-          Settings
+          <strong>Settings</strong>
         </a>
 
         <a
           class="font-small"
           target="_blank"
           href="https://github.com/makaroni4/willpower/issues">
-          Feedback
+          <strong>Feedback</strong>
         </a>
 
         <a
           class="font-small"
           target="_blank"
           href="https://github.com/makaroni4/willpower">
-          Source code
+          <strong>Source code</strong>
         </a>
       </div>
     </div>

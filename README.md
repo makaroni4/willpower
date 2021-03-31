@@ -40,7 +40,7 @@
 - [x] Extension popup final design
   - [x] Add stats
   - [x] Add Github page link for Feedback
-- [ ] Default extension values
+- [ ] Default extension values (extract to module)
 - [ ] Fix ES lint
 - [ ] QA on all popular time killing websites
 - [ ] Make screenshots

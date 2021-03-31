@@ -2,23 +2,28 @@
   <div class="oh-really-settings oh-really-design-system">
     <h1>Settings</h1>
 
-    <div class="oh-really-settings__tabs">
-      <div
-        class="oh-really-settings__tab"
-        :class="{
-          'oh-really-settings__tab--active': tab === 'patterns'
-        }"
-        @click.prevent="tab = 'patterns'">
-        URL patterns
-      </div>
 
+    <div class="oh-really-settings__tabs-wrapper">
       <div
-        class="oh-really-settings__tab"
-        :class="{
-          'oh-really-settings__tab--active': tab === 'screenwall'
-        }"
-        @click.prevent="tab = 'screenwall'">
-        Screen wall settings
+        class="oh-really-settings__tabs"
+        :class="`oh-really-settings__tabs--${tab}`">
+        <div
+          class="oh-really-settings__tab"
+          :class="{
+            'oh-really-settings__tab--active': tab === 'patterns'
+          }"
+          @click.prevent="tab = 'patterns'">
+          URL patterns
+        </div>
+
+        <div
+          class="oh-really-settings__tab"
+          :class="{
+            'oh-really-settings__tab--active': tab === 'screenwall'
+          }"
+          @click.prevent="tab = 'screenwall'">
+          Screen wall settings
+        </div>
       </div>
     </div>
 
@@ -173,14 +178,64 @@ export default {
     grid-gap: $px24;
   }
 
-  &__tabs {
+  &__tabs-wrapper {
+    border-radius: $px32;
+    background-color: $grey-9;
+    padding: 8px;
+    width: 100%;
+    max-width: $px496;
     margin-bottom: $px24;
   }
 
+  &__tabs {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    position: relative;
+    width: $px496;
+
+    &--patterns {
+      &:after {
+        left: 0;
+      }
+    }
+
+    &--screenwall {
+      &:after {
+        left: 50%;
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 50%;
+      top: 0;
+      transition: left cubic-bezier(.88, -.35, .565, 1.35) .4s;
+      border-radius: 27.5px;
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, .1);
+      background-color: $blue-6;
+      height: 100%;
+      z-index: 0;
+    }
+  }
+
   &__tab {
+    display: inline-block;
+    width: 50%;
+    padding: $px12 0;
+    z-index: 1;
+    position: relative;
+    transition: color 200ms;
+
+    color: $blue-6;
+    text-align: center;
+
     cursor: pointer;
 
     &--active {
+      color: $white;
       font-weight: 800;
     }
   }
