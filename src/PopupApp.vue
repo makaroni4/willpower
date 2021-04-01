@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { readData } from "./modules/chrome";
+import { readData } from './modules/chrome';
 
 export default {
   name: 'PopupApp',
@@ -72,16 +72,16 @@ export default {
     return {
       proceedCount: Number,
       fuckItCount: Number,
-      shownCount: Number
-    }
+      shownCount: Number,
+    };
   },
   mounted() {
-    readData(["proceedCount", "fuckItCount", "shownCount"], data => {
+    readData(['proceedCount', 'fuckItCount', 'shownCount'], (data) => {
       this.proceedCount = data.proceedCount || 0;
       this.fuckItCount = data.fuckItCount || 0;
       this.shownCount = data.shownCount || 0;
     });
-  }
+  },
 };
 </script>
 

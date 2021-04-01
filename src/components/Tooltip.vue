@@ -6,11 +6,11 @@
 
 <script>
 export default {
-  name: "Tooltip",
+  name: 'Tooltip',
   props: {
-    copy: String
-  }
-}
+    copy: String,
+  },
+};
 </script>
 
 <style lang="scss">

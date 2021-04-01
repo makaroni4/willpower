@@ -85,21 +85,22 @@
 </template>
 
 <script>
-import Button from "./Button";
-import Tooltip from "./Tooltip";
-import { readData, writeData } from "../modules/chrome";
+import Button from './Button.vue';
+import Tooltip from './Tooltip.vue';
+import { writeData } from '../modules/chrome';
+import { readConfig } from '../modules/config';
 
 export default {
-  name: "ScreenWall",
+  name: 'ScreenWall',
   components: {
     Button,
-    Tooltip
+    Tooltip,
   },
   data() {
     return {
       timeLeft: 15,
-      timerInterval: null
-    }
+      timerInterval: null,
+    };
   },
   props: {
     proceedCount: Number,
@@ -110,7 +111,7 @@ export default {
     proceedButtonCopy: String,
     fuckItButtonCopy: String,
     screenWallQuote: String,
-    redirectUrl: String
+    redirectUrl: String,
   },
   computed: {
     formattedQuote() {
@@ -119,57 +120,56 @@ export default {
         .replace(/[\*\_]{1}([^\*\_]+)[\*\_]{1}/g, '<i>$1</i>');
     },
     optionsPageUrl() {
-      return chrome.runtime.getURL("options.html");
+      return chrome.runtime.getURL('options.html');
     },
     showStats() {
       return (this.proceedCount || 0) > 0 && (this.fuckItCount || 0) > 0;
-    }
+    },
   },
   methods: {
     handleProceed() {
       const countdown = () => {
-        if (this.timeLeft == 0) {
+        if (this.timeLeft === 0) {
           clearTimeout(this.timerInterval);
 
           writeData({
-            "proceedCount": this.proceedCount + 1
+            proceedCount: this.proceedCount + 1,
           }, () => {
             this.$destroy();
             this.$el.parentNode.removeChild(this.$el);
 
-            readData(["activePatterns"], data => {
+            readConfig(data => {
               const activePatterns = data.activePatterns || {};
               const now = new Date();
               activePatterns[this.pattern] = now.getTime();
 
               writeData({
-                "activePatterns": activePatterns
+                activePatterns,
               });
             });
           });
-
         } else {
           this.timeLeft -= 1;
         }
-      }
+      };
 
       this.timerInterval = setInterval(countdown, 1000);
     },
     handleFuckIt() {
       writeData({
-        "fuckItCount": this.fuckItCount + 1
+        fuckItCount: this.fuckItCount + 1,
       }, () => {
-        window.location = this.redirectUrl
+        window.location = this.redirectUrl;
       });
-    }
+    },
   },
   mounted() {
     writeData({
-      "shownCount": this.shownCount + 1
+      shownCount: this.shownCount + 1,
     });
 
     this.timeLeft = this.proceedTimer;
-  }
+  },
 };
 </script>
 

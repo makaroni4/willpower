@@ -29,7 +29,6 @@
   - [x] Responsive markup
 - [ ] Extension options page final design
   - [ ] Final design for input fields
-  - [ ] Add bg color to the page
   - [x] Add Github link and feedback link (GH issues)
   - [x] Animation for notification
   - [x] Make quote a text area

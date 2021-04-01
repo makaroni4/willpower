@@ -8,23 +8,23 @@
 
 <script>
 export default {
-  name: "Button",
+  name: 'Button',
   props: {
     label: String,
     modifiers: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   computed: {
     cssClass() {
-      let basicClass = "oh-really-button";
-      let modifiers = this.modifiers.map(m => `${basicClass}--${m}`).join(" ");
+      const basicClass = 'oh-really-button';
+      const modifiers = this.modifiers.map((m) => `${basicClass}--${m}`).join(' ');
 
       return `${basicClass} ${modifiers}`;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss">

@@ -143,24 +143,24 @@
 </template>
 
 <script>
-import Input from "./components/TextInput";
-import Textarea from "./components/Textarea";
-import Button from "./components/Button";
-import Notification from "./components/Notification";
-import { readData, writeData } from "./modules/chrome";
-import { readConfigValue } from "./modules/config";
+import Input from './components/TextInput.vue';
+import Textarea from './components/Textarea.vue';
+import Button from './components/Button.vue';
+import Notification from './components/Notification.vue';
+import { writeData } from './modules/chrome';
+import { readConfig, readConfigValue } from './modules/config';
 
 export default {
-  name: "OptionsApp",
+  name: 'OptionsApp',
   components: {
     Input,
     Button,
     Notification,
-    Textarea
+    Textarea,
   },
   data() {
     return {
-      tab: "patterns",
+      tab: 'patterns',
       patterns: [],
       proceedTimer: null,
       proceedButtonCopy: null,
@@ -168,32 +168,32 @@ export default {
       screenWallQuote: null,
       redirectUrl: null,
       showNotification: false,
-      notificationCopy: null
-    }
+      notificationCopy: null,
+    };
   },
   methods: {
     addPattern() {
       this.patterns.push({
-        value: ""
+        value: '',
       });
     },
     removePattern(value) {
-      const index = this.patterns.findIndex(p => p.value === value);
+      const index = this.patterns.findIndex((p) => p.value === value);
 
       this.patterns.splice(index, 1);
     },
     saveSettings() {
       writeData({
-        "patterns": this.patterns.filter(el => !!el.value),
-        "proceedTimer": parseInt(this.proceedTimer, 10),
-        "proceedButtonCopy": this.proceedButtonCopy,
-        "fuckItButtonCopy": this.fuckItButtonCopy,
-        "screenWallQuote": this.screenWallQuote,
-        "redirectUrl": this.redirectUrl
+        patterns: this.patterns.filter((el) => !!el.value),
+        proceedTimer: parseInt(this.proceedTimer, 10),
+        proceedButtonCopy: this.proceedButtonCopy,
+        fuckItButtonCopy: this.fuckItButtonCopy,
+        screenWallQuote: this.screenWallQuote,
+        redirectUrl: this.redirectUrl,
       }, () => {
         this.refreshSettings();
 
-        this.notificationCopy = "Your settings were saved";
+        this.notificationCopy = 'Your settings were saved';
         this.showNotification = true;
 
         setTimeout(() => {
@@ -202,19 +202,19 @@ export default {
       });
     },
     refreshSettings() {
-      readData(["patterns", "proceedTimer", "proceedButtonCopy", "fuckItButtonCopy", "screenWallQuote", "redirectUrl"], results => {
-        this.patterns = readConfigValue(results, "patterns"),
-        this.proceedTimer = readConfigValue(results, "proceedTimer"),
-        this.proceedButtonCopy = readConfigValue(results, "proceedButtonCopy"),
-        this.fuckItButtonCopy = readConfigValue(results, "fuckItButtonCopy"),
-        this.screenWallQuote = readConfigValue(results, "screenWallQuote"),
-        this.redirectUrl = readConfigValue(results, "redirectUrl")
-      })
-    }
+      readConfig(results => {
+        this.patterns = readConfigValue(results, 'patterns'),
+        this.proceedTimer = readConfigValue(results, 'proceedTimer'),
+        this.proceedButtonCopy = readConfigValue(results, 'proceedButtonCopy'),
+        this.fuckItButtonCopy = readConfigValue(results, 'fuckItButtonCopy'),
+        this.screenWallQuote = readConfigValue(results, 'screenWallQuote'),
+        this.redirectUrl = readConfigValue(results, 'redirectUrl');
+      });
+    },
   },
   mounted() {
-    this.refreshSettings()
-  }
+    this.refreshSettings();
+  },
 };
 </script>
 

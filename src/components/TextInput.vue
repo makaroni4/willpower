@@ -8,15 +8,15 @@
 
 <script>
 export default {
-  name: "TextInput",
+  name: 'TextInput',
   props: {
     value: String,
     type: {
       type: String,
-      default: "text"
-    }
-  }
-}
+      default: 'text',
+    },
+  },
+};
 </script>
 
 <style lang="scss">

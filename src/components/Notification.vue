@@ -8,11 +8,11 @@
 
 <script>
 export default {
-  name: "Notification",
+  name: 'Notification',
   props: {
-    copy: String
-  }
-}
+    copy: String,
+  },
+};
 </script>
 
 <style lang="scss">

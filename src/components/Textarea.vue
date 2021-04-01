@@ -8,11 +8,11 @@
 
 <script>
 export default {
-  name: "Textarea",
+  name: 'Textarea',
   props: {
-    value: String
-  }
-}
+    value: String,
+  },
+};
 </script>
 
 <style lang="scss">
