@@ -62,16 +62,9 @@
     <div
       v-if="showStats"
       class="oh-really-popup__stats">
-      <div class="oh-really-popup__stat oh-really-popup__stat--blue">
+      <div class="oh-really-popup__stat oh-really-popup__stat--yellow">
         <Tooltip
           :copy="`Shown count: ${shownCount}`" />
-      </div>
-
-      <div
-        class="oh-really-popup__stat oh-really-popup__stat--red"
-        :style="`width: ${Math.round(100 * proceedCount / shownCount)}%;`">
-        <Tooltip
-          :copy="`Nasty websites: ${proceedCount}`" />
       </div>
 
       <div
@@ -79,6 +72,13 @@
         :style="`width: ${Math.round(100 * fuckItCount / shownCount)}%;`">
         <Tooltip
           :copy="`You: ${fuckItCount}`" />
+      </div>
+
+      <div
+        class="oh-really-popup__stat oh-really-popup__stat--red"
+        :style="`width: ${Math.round(100 * proceedCount / shownCount)}%;`">
+        <Tooltip
+          :copy="`Nasty websites: ${proceedCount}`" />
       </div>
     </div>
   </div>
@@ -279,11 +279,11 @@ export default {
     width: $px144;
     position: relative;
 
-    &--blue {
-      background-color: $blue-8;
+    &--yellow {
+      background-color: $yellow-8;
 
       &:hover {
-        background-color: $blue-7;
+        background-color: $yellow-7;
       }
     }
 
