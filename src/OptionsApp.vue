@@ -103,6 +103,12 @@
             </div>
 
             <div class="oh-really-settings__input">
+              <label>Timer copy</label>
+              <Textarea
+                v-model="timerCopy" />
+            </div>
+
+            <div class="oh-really-settings__input">
               <label>Redirect URL</label>
               <Input
                 v-model="redirectUrl" />
@@ -169,6 +175,7 @@ export default {
       redirectUrl: null,
       showNotification: false,
       notificationCopy: null,
+      timerCopy: null
     };
   },
   methods: {
@@ -190,6 +197,7 @@ export default {
         fuckItButtonCopy: this.fuckItButtonCopy,
         screenWallQuote: this.screenWallQuote,
         redirectUrl: this.redirectUrl,
+        timerCopy: this.timerCopy,
       }, () => {
         this.refreshSettings();
 
@@ -208,6 +216,7 @@ export default {
         this.proceedButtonCopy = readConfigValue(results, 'proceedButtonCopy');
         this.fuckItButtonCopy = readConfigValue(results, 'fuckItButtonCopy');
         this.screenWallQuote = readConfigValue(results, 'screenWallQuote');
+        this.timerCopy = readConfigValue(results, 'timerCopy');
         this.redirectUrl = readConfigValue(results, 'redirectUrl');
       });
     },

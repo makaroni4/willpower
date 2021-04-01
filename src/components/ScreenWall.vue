@@ -10,7 +10,7 @@
       <div
         class="oh-really-popup__quote"
         v-if="timerInterval">
-        <strong>{{ timeLeft }} seconds left</strong>. You still have a chance to win this!
+        <strong>{{ timeLeft }} seconds left</strong>. <span v-html="timerCopy"></span>
       </div>
 
       <div
@@ -112,6 +112,7 @@ export default {
     fuckItButtonCopy: String,
     screenWallQuote: String,
     redirectUrl: String,
+    timerCopy: String,
   },
   computed: {
     formattedQuote() {

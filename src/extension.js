@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import ScreenWall from './components/ScreenWall.vue';
-import { readData } from './modules/chrome';
-import { readConfigValue } from './modules/config';
+import { readConfig, readConfigValue } from './modules/config';
 
 Vue.config.productionTip = false;
 
@@ -22,27 +21,16 @@ const showScreenWall = (data, matchedPattern) => {
         fuckItButtonCopy: readConfigValue(data, 'fuckItButtonCopy'),
         screenWallQuote: readConfigValue(data, 'screenWallQuote'),
         redirectUrl: readConfigValue(data, 'redirectUrl'),
+        timerCopy: readConfigValue(data, 'timerCopy'),
         pattern: matchedPattern,
       },
     }),
   }).$mount('#oh-really-mega-app');
 };
 
-const STORAGE_KEYS = [
-  'proceedCount',
-  'fuckItCount',
-  'shownCount',
-  'patterns',
-  'activePatterns',
-  'proceedTimer',
-  'proceedButtonCopy',
-  'fuckItButtonCopy',
-  'screenWallQuote',
-  'redirectUrl',
-];
 const MAX_BROWSING_TIME = 15; // min
 
-readData(STORAGE_KEYS, (data) => {
+readConfig(data => {
   const patterns = (data.patterns || []).map((p) => p.value.replaceAll('.', '\\.').replaceAll('*', '.*'));
 
   const matchedPattern = patterns.find((pattern) => {

@@ -9,6 +9,7 @@ const DEFAULT_CONFIG = {
   fuckItButtonCopy: 'F**k it!',
   screenWallQuote: 'You want to spend your time like that?',
   redirectUrl: 'https://giphy.com/search/you-did-it',
+  timerCopy: 'You still have a chance to win this!',
   patterns: [],
 };
 
