@@ -1,49 +1,26 @@
-# oh_really_extension
+# Willpower [![Build Status](https://travis-ci.org/makaroni4/willpower.svg?branch=master)](https://travis-ci.org/makaroni4/willpower) [![Add to Chrome](https://user-images.githubusercontent.com/768070/51865757-87d45300-2347-11e9-84fd-bafff5b036b2.png)](https://chrome.google.com/webstore/detail/youtube-time-tracker/gadnhdhegigkbjiebmcceodbablkdjmo)
 
-## TODO
+:muscle: **Willpower** is a Chrome Extension that helps you stay focused by blocking websites or specific web pages.
 
-- [x] Add scoped SCSS support
-- [x] Design system
-- [x] Implement simple pattern matching with * for any symbol, like google.com*NBA
-- [x] Count popup shown, rejections and skips
-- [x] When proceed allow 30 min browsing without screen wall
-- [x] Move chrome logic into a module
-- [x] Extension options page
-  - [x] Implement Save button
-  - [x] Allow deletion of websites
-  - [x] Allow editing of websites
-  - [x] Add config for timer value
-  - [x] Add config for proceed button copy
-  - [x] Add config for fuck it button copy
-  - [x] Add config for motivational quote
-  - [x] Add config for redirect URL
-  - [x] Add popup "Saved" when settings are saved
-- [x] Extension screen wall final design
-  - [x] Add logo
-  - [x] Add basic emoji support
-  - [x] Style quote, add basic markdown
-  - [x] Make proceed a link (the only CTA is F**k it)
-  - [x] Show stats in the corner
-  - [x] Replace quote with timer copy when proceed
-  - [x] Normalize for all websites
-  - [x] Responsive markup
-- [ ] Extension options page final design
-  - [ ] Final design for input fields
-  - [x] Add Github link and feedback link (GH issues)
-  - [x] Animation for notification
-  - [x] Make quote a text area
-  - [x] Make delete links a "x" icon
-  - [x] Add logo
-  - [x] Try 2 column design (1c for URLs, 1c for settings)
-  - [x] Add tabs
-- [x] Extension popup final design
-  - [x] Add stats
-  - [x] Add Github page link for Feedback
-- [x] Default extension values (extract to module)
-- [ ] Fix ES lint
-- [ ] QA on all popular time killing websites
-- [ ] Make screenshots
-- [ ] Create Chrome page
-- [ ] Create Firefox page
-- [ ] Create README file
-- [ ] Record screencast
+:heart: Unlike other website blocking extensions, Willpower **does not track any user data**. It's a simple Vue JS application made with only one purpose – to help being focused and take a breath before actually visiting a rabbit-hole-website.
+
+:wrench: **Willpower** is customizable. You can:
+
+* set your breathing timer duration
+* motivational quote
+* buttons copy
+* redirect destination after decided to close a website
+
+:bar_chart: **Willpower** stores its data in your Chrome browser storage. Besides default config parameters :point_up: it also keeps track of how many times you visited or skipped blocked pages.
+
+## Development
+
+Run `npm install` to install needed packages. FYI Willpower built with Vue CLI.
+
+Run `npm run build` to compile the extension. Vue CLI will add a `dist` folder with all the necessary files.
+
+Load the [dist folder](https://github.com/makaroni4/willpower/tree/master/dist) to [chrome://extensions/](chrome://extensions/) via "Load unpacked":
+
+![Loading extension in Chrome for development](https://user-images.githubusercontent.com/768070/51443928-e3bc2d80-1cf0-11e9-9389-08887d88015f.png).
+
+:mag: You'll need to run `npm run build` and update extension :point_up: every time you changed CSS/JS files.

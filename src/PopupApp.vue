@@ -87,7 +87,7 @@ export default {
 
 <style lang="scss">
 .oh-really-popup-app {
-  padding: $px8;
+  padding: $px16;
   width: $px240;
 
   background-color: $white;
