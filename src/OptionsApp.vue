@@ -1,5 +1,5 @@
 <template>
-  <div class="oh-really-settings oh-really-design-system">
+  <div class="oh-really-settings">
     <div class="oh-really-settings__container">
       <header class="oh-really-settings__header">
         <div class="oh-really-settings__logo oh-really-settings__logo--animated" />
@@ -219,64 +219,11 @@ export default {
 </script>
 
 <style lang="scss">
-@keyframes breathing {
-  0% {
-    -webkit-transform: scale(0.9);
-    -ms-transform: scale(0.9);
-    transform: scale(0.9);
-  }
-
-  25% {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
-  }
-
-  60% {
-    -webkit-transform: scale(0.9);
-    -ms-transform: scale(0.9);
-    transform: scale(0.9);
-  }
-
-  100% {
-    -webkit-transform: scale(0.9);
-    -ms-transform: scale(0.9);
-    transform: scale(0.9);
-  }
-}
-
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
-.slide-fade-enter-active {
-  transition: all .4s ease;
-}
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateX($px32);
-  opacity: 0;
-}
-
-.slide-fade-leave-to {
-  opacity: 0;
-}
-
-.component-fade-enter-active, .component-fade-leave-active {
-  transition: opacity .2s ease;
-}
-
-.component-fade-enter, .component-fade-leave-to {
-  opacity: 0;
-}
-
 .oh-really-settings {
-  padding-bottom: $px72;
-
   &__container {
     max-width: $px960;
     margin: 0 auto;
+    padding-bottom: $px72;
   }
 
   &__header {

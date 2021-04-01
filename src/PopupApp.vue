@@ -1,5 +1,5 @@
 <template>
-  <div class="oh-really-popup-app oh-really-design-system">
+  <div class="oh-really-popup-app">
     <header class="oh-really-popup-app__header">
       <div class="oh-really-popup-app__logo oh-really-popup-app__logo--animated" />
       <strong>WILLPOWER</strong>
@@ -86,32 +86,6 @@ export default {
 </script>
 
 <style lang="scss">
-@keyframes breathing {
-  0% {
-    -webkit-transform: scale(0.9);
-    -ms-transform: scale(0.9);
-    transform: scale(0.9);
-  }
-
-  25% {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
-  }
-
-  60% {
-    -webkit-transform: scale(0.9);
-    -ms-transform: scale(0.9);
-    transform: scale(0.9);
-  }
-
-  100% {
-    -webkit-transform: scale(0.9);
-    -ms-transform: scale(0.9);
-    transform: scale(0.9);
-  }
-}
-
 .oh-really-popup-app {
   padding: $px8;
   width: $px240;
