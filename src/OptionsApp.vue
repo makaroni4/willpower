@@ -6,8 +6,6 @@
         <strong>WILLPOWER</strong>
       </header>
 
-      <h1>Settings</h1>
-
       <div class="oh-really-settings__tabs-wrapper">
         <div
           class="oh-really-settings__tabs"
@@ -100,12 +98,22 @@
               <label>Screen wall quote</label>
               <Textarea
                 v-model="screenWallQuote" />
+
+              <div class="oh-really-settings__input-hint">
+                You can use basic Markdown syntax for <strong>**bold**</strong>
+                or <i>*italic*</i> copy.
+              </div>
             </div>
 
             <div class="oh-really-settings__input">
               <label>Timer copy</label>
               <Textarea
                 v-model="timerCopy" />
+
+              <div class="oh-really-settings__input-hint">
+                You can use basic Markdown syntax for <strong>**bold**</strong>
+                or <i>*italic*</i> copy.
+              </div>
             </div>
 
             <div class="oh-really-settings__input">
@@ -175,7 +183,7 @@ export default {
       redirectUrl: null,
       showNotification: false,
       notificationCopy: null,
-      timerCopy: null
+      timerCopy: null,
     };
   },
   methods: {
@@ -262,9 +270,19 @@ export default {
     max-width: $px496;
     position: relative;
 
+    label {
+      font-weight: 800;
+    }
+
     &:not(:last-child) {
       margin-bottom: $px16;
     }
+  }
+
+  &__input-hint {
+    font-size: 12px;
+    line-height: 1.3;
+    color: $grey-7;
   }
 
   &__input-plus-icon {
