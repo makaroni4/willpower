@@ -107,7 +107,7 @@ export default {
     width: $px32;
     height: $px32;
     display: block;
-    margin-right: $px16;
+    margin-right: $px8;
 
     background-image: url("chrome-extension://__MSG_@@extension_id__/images/logo.svg") !important;
     background-repeat: no-repeat;
