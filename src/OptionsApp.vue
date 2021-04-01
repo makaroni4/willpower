@@ -147,7 +147,8 @@ import Input from "./components/TextInput";
 import Textarea from "./components/Textarea";
 import Button from "./components/Button";
 import Notification from "./components/Notification";
-import { readData, writeData } from "./assets/modules/chrome";
+import { readData, writeData } from "./modules/chrome";
+import { readConfigValue } from "./modules/config";
 
 export default {
   name: "OptionsApp",
@@ -202,12 +203,12 @@ export default {
     },
     refreshSettings() {
       readData(["patterns", "proceedTimer", "proceedButtonCopy", "fuckItButtonCopy", "screenWallQuote", "redirectUrl"], results => {
-        this.patterns = results.patterns || [];
-        this.proceedTimer = results.proceedTimer || 15; // sec
-        this.proceedButtonCopy = results.proceedButtonCopy || "Yes, really";
-        this.fuckItButtonCopy = results.fuckItButtonCopy || "F**k it";
-        this.screenWallQuote = results.screenWallQuote || "You want to spend your time like that?"
-        this.redirectUrl = results.redirectUrl || "https://giphy.com/search/you-did-it"
+        this.patterns = readConfigValue(results, "patterns"),
+        this.proceedTimer = readConfigValue(results, "proceedTimer"),
+        this.proceedButtonCopy = readConfigValue(results, "proceedButtonCopy"),
+        this.fuckItButtonCopy = readConfigValue(results, "fuckItButtonCopy"),
+        this.screenWallQuote = readConfigValue(results, "screenWallQuote"),
+        this.redirectUrl = readConfigValue(results, "redirectUrl")
       })
     }
   },

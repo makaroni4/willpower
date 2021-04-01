@@ -87,7 +87,7 @@
 <script>
 import Button from "./Button";
 import Tooltip from "./Tooltip";
-import { readData, writeData } from "../assets/modules/chrome";
+import { readData, writeData } from "../modules/chrome";
 
 export default {
   name: "ScreenWall",

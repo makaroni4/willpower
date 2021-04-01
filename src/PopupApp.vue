@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { readData } from "./assets/modules/chrome";
+import { readData } from "./modules/chrome";
 
 export default {
   name: 'PopupApp',
