@@ -1,4 +1,4 @@
-import { readData } from "./chrome";
+import { readData } from './chrome';
 
 const DEFAULT_CONFIG = {
   proceedTimer: 15,

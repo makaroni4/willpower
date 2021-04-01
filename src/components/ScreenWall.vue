@@ -116,8 +116,8 @@ export default {
   computed: {
     formattedQuote() {
       return this.screenWallQuote
-        .replace(/[\*\_]{2}([^\*\_]+)[\*\_]{2}/g, '<strong>$1</strong>')
-        .replace(/[\*\_]{1}([^\*\_]+)[\*\_]{1}/g, '<i>$1</i>');
+        .replace(/[*_]{2}([^*_]+)[*_]{2}/g, '<strong>$1</strong>')
+        .replace(/[*_]{1}([^*_]+)[*_]{1}/g, '<i>$1</i>');
     },
     optionsPageUrl() {
       return chrome.runtime.getURL('options.html');
@@ -138,7 +138,7 @@ export default {
             this.$destroy();
             this.$el.parentNode.removeChild(this.$el);
 
-            readConfig(data => {
+            readConfig((data) => {
               const activePatterns = data.activePatterns || {};
               const now = new Date();
               activePatterns[this.pattern] = now.getTime();

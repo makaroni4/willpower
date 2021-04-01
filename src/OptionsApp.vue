@@ -202,12 +202,12 @@ export default {
       });
     },
     refreshSettings() {
-      readConfig(results => {
-        this.patterns = readConfigValue(results, 'patterns'),
-        this.proceedTimer = readConfigValue(results, 'proceedTimer'),
-        this.proceedButtonCopy = readConfigValue(results, 'proceedButtonCopy'),
-        this.fuckItButtonCopy = readConfigValue(results, 'fuckItButtonCopy'),
-        this.screenWallQuote = readConfigValue(results, 'screenWallQuote'),
+      readConfig((results) => {
+        this.patterns = readConfigValue(results, 'patterns');
+        this.proceedTimer = readConfigValue(results, 'proceedTimer');
+        this.proceedButtonCopy = readConfigValue(results, 'proceedButtonCopy');
+        this.fuckItButtonCopy = readConfigValue(results, 'fuckItButtonCopy');
+        this.screenWallQuote = readConfigValue(results, 'screenWallQuote');
         this.redirectUrl = readConfigValue(results, 'redirectUrl');
       });
     },
