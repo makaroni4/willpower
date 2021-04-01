@@ -53,22 +53,21 @@
                 class="oh-really-settings__input-minus-icon">
             </div>
 
-            <a
-              class="oh-really-settings__add-pattern"
-              @click.prevent="addPattern"
-              href="#">
-              <img
-                src="./assets/images/plus-circle-solid.svg"
-                class="oh-really-settings__input-plus-icon">
+            <div class="oh-really-settings__section-menu">
+              <Button
+                @click.prevent="saveSettings"
+                :label="'Save settings'" />
 
-              Add patterns
-            </a>
-          </div>
+              <button
+                class="oh-really-settings__add-pattern"
+                @click.prevent="addPattern">
+                <img
+                  src="./assets/images/plus-circle-solid.svg"
+                  class="oh-really-settings__input-plus-icon">
 
-          <div class="oh-really-settings__section-actions">
-            <Button
-              @click.prevent="saveSettings"
-              :label="'Save settings'" />
+                ADD PATTERN
+              </button>
+            </div>
           </div>
         </section>
 
@@ -315,6 +314,8 @@ export default {
     width: $px16;
     height: $px16;
     margin-right: $px8;
+
+    color: $grey-7;
   }
 
   &__input-minus-icon {
@@ -324,6 +325,8 @@ export default {
     right: $px16;
     top: 50%;
     transform: translateY(-50%);
+
+    color: $grey-7;
 
     cursor: pointer;
   }
@@ -400,12 +403,36 @@ export default {
   }
 
   &__section-body {
+    width: $px496;
     margin-bottom: $px24;
   }
 
   &__add-pattern {
+    display: flex;
+    align-items: center;
+    padding: $px8 $px12;
+
+    border-radius: $px16;
+    border: 0;
+    outline: none;
+    appearance: none;
+
+    background-color: $grey-10;
+
     font-size: $px12;
     line-height: 1;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: $grey-9;
+    }
+  }
+
+  &__section-menu {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
   }
 
   &__menu {

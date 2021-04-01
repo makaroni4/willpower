@@ -31,10 +31,17 @@ export default {
   font-family: "Muli", sans-serif;
 
   appearance: none;
+  transition: all .4s ease;
 
   &::placeholder {
     font-family: "Muli", sans-serif;
     color: $grey-7;
+  }
+
+  &:focus {
+    box-shadow: 0 0 $px4 $grey-8;
+
+    transform: scale(1.01);
   }
 
   &--error {
