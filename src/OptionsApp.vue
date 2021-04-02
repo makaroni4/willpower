@@ -68,7 +68,7 @@
               :class="'oh-really-settings__input-minus-icon'" />
           </div>
 
-          <div class="oh-really-settings__section-menu">
+          <div class="oh-really-settings__section-actions">
             <Button
               @click.prevent="saveSettings"
               :label="'Save settings'" />
@@ -418,7 +418,7 @@ export default {
   }
 
   &__section-desription {
-    margin-bottom: $px16;
+    margin-bottom: $px24;
 
     font-size: $px12;
     color: $grey-7;
@@ -428,7 +428,7 @@ export default {
     }
   }
 
-  &__section-menu {
+  &__section-actions {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
