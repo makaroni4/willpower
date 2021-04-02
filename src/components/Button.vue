@@ -43,11 +43,12 @@ export default {
   font-family: "Muli", sans-serif;
   text-decoration: none;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: uppercase !important;
   color: $white;
-  font-size: 17px !important;
+  font-size: 12px !important;
   line-height: 1.5 !important;
   font-weight: 400 !important;
+  letter-spacing: $px1 !important;
 
   cursor: pointer;
   transition: all 0.3s;

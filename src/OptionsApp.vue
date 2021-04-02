@@ -6,130 +6,145 @@
         <strong>WILLPOWER</strong>
       </header>
 
-      <div class="oh-really-settings__tabs-wrapper">
+      <div class="oh-really-settings__tabs">
         <div
-          class="oh-really-settings__tabs"
-          :class="`oh-really-settings__tabs--${tab}`">
-          <div
-            class="oh-really-settings__tab"
-            :class="{
-              'oh-really-settings__tab--active': tab === 'patterns'
-            }"
-            @click.prevent="tab = 'patterns'">
-            URL patterns
-          </div>
+          class="oh-really-settings__tab"
+          :class="{
+            'oh-really-settings__tab--active': tab === 'patterns'
+          }"
+          @click.prevent="tab = 'patterns'">
 
-          <div
-            class="oh-really-settings__tab"
-            :class="{
-              'oh-really-settings__tab--active': tab === 'screenwall'
-            }"
-            @click.prevent="tab = 'screenwall'">
-            Screen wall settings
-          </div>
+          URL patterns
+        </div>
+
+        <div
+          class="oh-really-settings__tab"
+          :class="{
+            'oh-really-settings__tab--active': tab === 'screenwall'
+          }"
+          @click.prevent="tab = 'screenwall'">
+
+          Screen wall settings
         </div>
       </div>
 
-      <transition name="component-fade" mode="out-in">
-        <section
-          class="oh-really-settings__section"
-          :key="'patterns'"
-          v-if="tab === 'patterns'">
+      <section
+        class="oh-really-settings__section"
+        :key="'patterns'"
+        v-if="tab === 'patterns'">
 
-          <div class="oh-really-settings__section-body">
-            <div
-              v-for="pattern in patterns"
-              :key="pattern"
-              class="oh-really-settings__input">
+        <div class="oh-really-settings__section-body">
+          <div class="oh-really-settings__section-desription">
+            <p>
+              The Willpower extension blocks a page if a URL matches
+              one of the patterns you specified.
+            </p>
 
-              <Input
-                v-model="pattern.value" />
+            <p>
+              For example, <strong>google.com</strong> will block any page on Google.
+            </p>
 
-              <img
-                @click.prevent="removePattern(pattern.value)"
-                src="./assets/images/minus-circle-solid.svg"
-                class="oh-really-settings__input-minus-icon">
-            </div>
+            <p>
+              <strong>instagram.com/nbamemes</strong> will block a specific Instagram profile.
+            </p>
 
-            <div class="oh-really-settings__section-menu">
-              <Button
-                @click.prevent="saveSettings"
-                :label="'Save settings'" />
-
-              <button
-                class="oh-really-settings__add-pattern"
-                @click.prevent="addPattern">
-                <img
-                  src="./assets/images/plus-circle-solid.svg"
-                  class="oh-really-settings__input-plus-icon">
-
-                ADD PATTERN
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <section
-          class="oh-really-settings__section"
-          :key="'screenwall'"
-          v-if="tab === 'screenwall'">
-
-          <div class="oh-really-settings__section-body">
-            <div class="oh-really-settings__input">
-              <label>Timer</label>
-              <Input
-                :type="'number'"
-                v-model="proceedTimer" />
-            </div>
-
-            <div class="oh-really-settings__input">
-              <label>Proceed button copy</label>
-              <Input
-                v-model="proceedButtonCopy" />
-              </div>
-
-            <div class="oh-really-settings__input">
-              <label>Close website button copy</label>
-              <Input
-                v-model="fuckItButtonCopy" />
-            </div>
-
-            <div class="oh-really-settings__input">
-              <label>Screen wall quote</label>
-              <Textarea
-                v-model="screenWallQuote" />
-
-              <div class="oh-really-settings__input-hint">
-                You can use basic Markdown syntax for <strong>**bold**</strong>
-                or <i>*italic*</i> copy.
-              </div>
-            </div>
-
-            <div class="oh-really-settings__input">
-              <label>Timer copy</label>
-              <Textarea
-                v-model="timerCopy" />
-
-              <div class="oh-really-settings__input-hint">
-                You can use basic Markdown syntax for <strong>**bold**</strong>
-                or <i>*italic*</i> copy.
-              </div>
-            </div>
-
-            <div class="oh-really-settings__input">
-              <label>Redirect URL</label>
-              <Input
-                v-model="redirectUrl" />
-            </div>
+            <p>
+              You can use a wildcard symbol <strong>*</strong> to match
+              any sequence of characters. For example, <strong>google.com*NBA</strong>
+              will block any page on Goolge if a URL contains "NBA".
+            </p>
           </div>
 
-          <div class="oh-really-settings__section-actions">
+          <div
+            v-for="pattern in patterns"
+            :key="pattern"
+            class="oh-really-settings__input">
+
+            <Input
+              v-model="pattern.value" />
+
+            <MinusIcon
+              @click.prevent="removePattern(pattern.value)"
+              :class="'oh-really-settings__input-minus-icon'" />
+          </div>
+
+          <div class="oh-really-settings__section-menu">
             <Button
               @click.prevent="saveSettings"
               :label="'Save settings'" />
+
+            <button
+              class="oh-really-settings__add-pattern"
+              @click.prevent="addPattern">
+              <PlusIcon
+                :class="'oh-really-settings__input-plus-icon'" />
+
+              ADD PATTERN
+            </button>
           </div>
-        </section>
-      </transition>
+        </div>
+      </section>
+
+      <section
+        class="oh-really-settings__section"
+        :key="'screenwall'"
+        v-if="tab === 'screenwall'">
+
+        <div class="oh-really-settings__section-body">
+          <div class="oh-really-settings__input">
+            <label>Timer, sec</label>
+            <Input
+              :type="'number'"
+              v-model="proceedTimer" />
+          </div>
+
+          <div class="oh-really-settings__input">
+            <label>Proceed button copy</label>
+            <Input
+              v-model="proceedButtonCopy" />
+            </div>
+
+          <div class="oh-really-settings__input">
+            <label>Close website button copy</label>
+            <Input
+              v-model="fuckItButtonCopy" />
+          </div>
+
+          <div class="oh-really-settings__input">
+            <label>Screen wall quote</label>
+            <Textarea
+              v-model="screenWallQuote" />
+
+            <div class="oh-really-settings__input-hint">
+              You can use basic Markdown syntax for <strong>**bold**</strong>
+              or <i>*italic*</i> copy.
+            </div>
+          </div>
+
+          <div class="oh-really-settings__input">
+            <label>Timer copy</label>
+            <Textarea
+              v-model="timerCopy" />
+
+            <div class="oh-really-settings__input-hint">
+              You can use basic Markdown syntax for <strong>**bold**</strong>
+              or <i>*italic*</i> copy.
+            </div>
+          </div>
+
+          <div class="oh-really-settings__input">
+            <label>Redirect URL</label>
+            <Input
+              v-model="redirectUrl" />
+          </div>
+        </div>
+
+        <div class="oh-really-settings__section-actions">
+          <Button
+            @click.prevent="saveSettings"
+            :label="'Save settings'" />
+        </div>
+      </section>
     </div>
 
     <transition name="slide-fade">
@@ -163,6 +178,8 @@ import Button from './components/Button.vue';
 import Notification from './components/Notification.vue';
 import { writeData } from './modules/chrome';
 import { readConfig, readConfigValue } from './modules/config';
+import MinusIcon from './assets/images/minus-circle-solid.svg';
+import PlusIcon from './assets/images/plus-circle-solid.svg';
 
 export default {
   name: 'OptionsApp',
@@ -171,6 +188,8 @@ export default {
     Button,
     Notification,
     Textarea,
+    MinusIcon,
+    PlusIcon,
   },
   data() {
     return {
@@ -237,6 +256,8 @@ export default {
 
 <style lang="scss">
 .oh-really-settings {
+  $root: &;
+
   &__container {
     max-width: $px960;
     margin: 0 auto;
@@ -248,7 +269,7 @@ export default {
     flex-direction: row;
     align-items: center;
     margin-bottom: $px32;
-    padding: $px8 0;
+    padding: $px12 0;
   }
 
   &__logo {
@@ -267,7 +288,6 @@ export default {
   }
 
   &__input {
-    max-width: $px496;
     position: relative;
 
     label {
@@ -290,7 +310,7 @@ export default {
     height: $px16;
     margin-right: $px8;
 
-    color: $grey-7;
+    color: $grey-1;
   }
 
   &__input-minus-icon {
@@ -304,6 +324,10 @@ export default {
     color: $grey-7;
 
     cursor: pointer;
+
+    &:hover {
+      color: $grey-5;
+    }
   }
 
   &__body {
@@ -312,80 +336,69 @@ export default {
     grid-gap: $px24;
   }
 
-  &__tabs-wrapper {
-    border-radius: $px32;
-    width: 100%;
-    max-width: $px496;
-    margin-bottom: $px24;
+  &__section {
+    padding: $px16;
+    max-width: $px640;
+
+    background-color: $grey-10;
   }
 
   &__tabs {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
-    position: relative;
-    width: $px496;
-    padding: $px4;
-
-    border-radius: $px32;
-
-    background-color: $grey-10;
-
-    &--patterns {
-      &:after {
-        left: 0;
-      }
-    }
-
-    &--screenwall {
-      &:after {
-        left: 50%;
-      }
-    }
-
-    &:after {
-      content: "";
-      position: absolute;
-      width: 50%;
-      top: 0;
-      transition: left cubic-bezier(.88, -.35, .565, 1.35) .3s;
-      border-radius: 27.5px;
-      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, .1);
-      background-color: $blue-6;
-      height: 100%;
-      z-index: 0;
-    }
+    max-width: $px640;
   }
 
   &__tab {
-    display: inline-block;
-    width: 50%;
-    padding: $px12 0;
-    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    padding: $px16 0;
     position: relative;
-    transition: color 0.3s;
+    top: $px12;
 
-    color: $blue-6;
-    text-align: center;
+    border-radius: $px4 0 0 0;
+
+    background-color: $grey-9;
+
+    font-weight: 800;
 
     cursor: pointer;
 
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      top: $px8;
+    }
+
     &--active {
-      color: $white;
-      font-weight: 800;
+      width: 55%;
+      padding: $px24 0;
+      top: 0;
+
+      border-radius: $px4 $px4 0 0;
+
+      background-color: $grey-10;
+
+      &:hover {
+        top: 0;
+      }
+
+      & + #{$root}__tab {
+        border-radius: 0 $px4 0 0;
+      }
     }
   }
 
   &__section-body {
-    width: $px496;
     margin-bottom: $px24;
   }
 
   &__add-pattern {
     display: flex;
     align-items: center;
-    padding: $px8 $px12;
+    padding: $px4 $px12;
 
     border-radius: $px16;
     border: 0;
@@ -394,13 +407,24 @@ export default {
 
     background-color: $grey-10;
 
-    font-size: $px12;
+    font-size: $px12 !important;
     line-height: 1;
 
     cursor: pointer;
 
     &:hover {
       background-color: $grey-9;
+    }
+  }
+
+  &__section-desription {
+    margin-bottom: $px16;
+
+    font-size: $px12;
+    color: $grey-7;
+
+    &:hover {
+      color: $grey-1;
     }
   }
 
