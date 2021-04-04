@@ -1,4 +1,4 @@
-# Willpower [![Add to Chrome](https://user-images.githubusercontent.com/768070/51865757-87d45300-2347-11e9-84fd-bafff5b036b2.png)](https://chrome.google.com/webstore/detail/youtube-time-tracker/gadnhdhegigkbjiebmcceodbablkdjmo)
+# Willpower
 
 :muscle: **Willpower** is a Chrome Extension that helps you stay focused by blocking websites or specific web pages.
 
