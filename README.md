@@ -1,4 +1,5 @@
-# Willpower
+# Willpower <a href="https://chrome.google.com/webstore/detail/willpower/codkcdmdmljjhncjfkfgjbmiglcfpdgc"><img width="124" alt="Frame 1 (9)" src="https://user-images.githubusercontent.com/768070/113516074-a1513500-9578-11eb-9eb9-06326003cf66.png"></a>
+
 
 :muscle: **Willpower** is a Chrome Extension that helps you stay focused by blocking websites or specific web pages.
 
