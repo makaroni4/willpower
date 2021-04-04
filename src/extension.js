@@ -22,13 +22,12 @@ const showScreenWall = (data, matchedPattern) => {
         screenWallQuote: readConfigValue(data, 'screenWallQuote'),
         redirectUrl: readConfigValue(data, 'redirectUrl'),
         timerCopy: readConfigValue(data, 'timerCopy'),
+        browsingPeriod: readConfigValue(data, 'browsingPeriod'),
         pattern: matchedPattern,
       },
     }),
   }).$mount('#oh-really-mega-app');
 };
-
-const MAX_BROWSING_TIME = 15; // min
 
 readConfig(data => {
   const patterns = (data.patterns || []).map((p) => p.value.replaceAll('.', '\\.').replaceAll('*', '.*'));
@@ -50,9 +49,10 @@ readConfig(data => {
         showScreenWall(data, matchedPattern);
       }
       const now = (new Date()).getTime();
-      const lastShownInMinutes = (now - activeAt) / 1000 / 60;
+      const lastShownInMinutes = (now - activeAt) / 1000 / 60; // min
+      const browsingPeriod = readConfigValue(data, 'browsingPeriod');
 
-      if (lastShownInMinutes > MAX_BROWSING_TIME) {
+      if (lastShownInMinutes > browsingPeriod) {
         showScreenWall(data, matchedPattern);
       }
     } else {

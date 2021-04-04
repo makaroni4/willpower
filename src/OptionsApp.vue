@@ -92,7 +92,20 @@
 
         <div class="oh-really-settings__section-body">
           <div class="oh-really-settings__input">
-            <label>Timer, sec</label>
+            <label class="oh-really-settings__label">
+              <div class="oh-really-settings__label-container">
+                Breathing timer, sec
+
+                <InfoIcon
+                  :class="'oh-really-settings__input-info-icon'" />
+
+                <Tooltip
+                  :modifiers="['long']"
+                  :copy="'How much time do you want to have to change \
+                  your mind before skipping the screenwall and entering the website?'" />
+              </div>
+            </label>
+
             <Input
               :type="'number'"
               v-model="proceedTimer" />
@@ -137,6 +150,13 @@
             <Input
               v-model="redirectUrl" />
           </div>
+
+          <div class="oh-really-settings__input">
+            <label>Allowed browsing period, min</label>
+            <Input
+              :type="'number'"
+              v-model="browsingPeriod" />
+          </div>
         </div>
 
         <div class="oh-really-settings__section-actions">
@@ -174,12 +194,14 @@
 <script>
 import Input from './components/TextInput.vue';
 import Textarea from './components/Textarea.vue';
+import Tooltip from './components/Tooltip.vue';
 import Button from './components/Button.vue';
 import Notification from './components/Notification.vue';
 import { writeData } from './modules/chrome';
 import { readConfig, readConfigValue } from './modules/config';
 import MinusIcon from './assets/images/minus-circle-solid.svg';
 import PlusIcon from './assets/images/plus-circle-solid.svg';
+import InfoIcon from './assets/images/info-circle-solid.svg';
 
 export default {
   name: 'OptionsApp',
@@ -190,6 +212,8 @@ export default {
     Textarea,
     MinusIcon,
     PlusIcon,
+    InfoIcon,
+    Tooltip,
   },
   data() {
     return {
@@ -203,6 +227,7 @@ export default {
       showNotification: false,
       notificationCopy: null,
       timerCopy: null,
+      browsingPeriod: null,
     };
   },
   methods: {
@@ -225,6 +250,7 @@ export default {
         screenWallQuote: this.screenWallQuote,
         redirectUrl: this.redirectUrl,
         timerCopy: this.timerCopy,
+        browsingPeriod: this.browsingPeriod,
       }, () => {
         this.refreshSettings();
 
@@ -245,6 +271,7 @@ export default {
         this.screenWallQuote = readConfigValue(results, 'screenWallQuote');
         this.timerCopy = readConfigValue(results, 'timerCopy');
         this.redirectUrl = readConfigValue(results, 'redirectUrl');
+        this.browsingPeriod = readConfigValue(results, 'browsingPeriod');
       });
     },
   },
@@ -290,13 +317,36 @@ export default {
   &__input {
     position: relative;
 
-    label {
-      font-weight: 800;
-    }
-
     &:not(:last-child) {
-      margin-bottom: $px16;
+      margin-bottom: $px24;
     }
+  }
+
+  &__label {
+    display: flex;
+  }
+
+  &__label-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: $px2;
+
+    font-weight: 800;
+    color: $grey-5;
+
+    &:hover {
+      & .oh-really-tooltip {
+        display: block;
+      }
+    }
+  }
+
+  &__input-info-icon {
+    width: $px16;
+    height: $px16;
+    margin-left: $px8;
   }
 
   &__input-hint {
@@ -340,6 +390,8 @@ export default {
     padding: $px16;
     max-width: $px640;
 
+    border-radius: 0 0 $px8 $px8;
+
     background-color: $grey-10;
   }
 
@@ -358,11 +410,12 @@ export default {
     position: relative;
     top: $px12;
 
-    border-radius: $px4 0 0 0;
+    border-radius: $px8 0 0 0;
 
     background-color: $grey-9;
 
     font-weight: 800;
+    color: $grey-3;
 
     cursor: pointer;
 
@@ -377,7 +430,7 @@ export default {
       padding: $px24 0;
       top: 0;
 
-      border-radius: $px4 $px4 0 0;
+      border-radius: $px8 $px8 0 0;
 
       background-color: $grey-10;
 

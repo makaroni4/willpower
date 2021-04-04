@@ -10,7 +10,7 @@
       <div
         class="oh-really-popup__quote"
         v-if="timerInterval">
-        <strong>{{ timeLeft }} seconds left</strong>. <span v-html="timerCopy"></span>
+        <strong>{{ timeLeft }} seconds left</strong>. <span v-html="formattedTimerCopy"></span>
       </div>
 
       <div
@@ -64,6 +64,7 @@
       class="oh-really-popup__stats">
       <div class="oh-really-popup__stat oh-really-popup__stat--yellow">
         <Tooltip
+          :modifiers="['nowrap']"
           :copy="`Shown count: ${shownCount}`" />
       </div>
 
@@ -71,6 +72,7 @@
         class="oh-really-popup__stat oh-really-popup__stat--green"
         :style="`width: ${Math.round(100 * fuckItCount / shownCount)}%;`">
         <Tooltip
+          :modifiers="['nowrap']"
           :copy="`You: ${fuckItCount}`" />
       </div>
 
@@ -78,6 +80,7 @@
         class="oh-really-popup__stat oh-really-popup__stat--red"
         :style="`width: ${Math.round(100 * proceedCount / shownCount)}%;`">
         <Tooltip
+          :modifiers="['nowrap']"
           :copy="`Nasty websites: ${proceedCount}`" />
       </div>
     </div>
@@ -117,6 +120,11 @@ export default {
   computed: {
     formattedQuote() {
       return this.screenWallQuote
+        .replace(/[*_]{2}([^*_]+)[*_]{2}/g, '<strong>$1</strong>')
+        .replace(/[*_]{1}([^*_]+)[*_]{1}/g, '<i>$1</i>');
+    },
+    formattedTimerCopy() {
+      return this.timerCopy
         .replace(/[*_]{2}([^*_]+)[*_]{2}/g, '<strong>$1</strong>')
         .replace(/[*_]{1}([^*_]+)[*_]{1}/g, '<i>$1</i>');
     },
@@ -316,6 +324,7 @@ export default {
     right: $px32;
     z-index: 100000000;
     display: flex;
+    flex-direction: row;
 
     a {
       color: $grey-6;

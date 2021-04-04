@@ -1,7 +1,8 @@
 import { readData } from './chrome';
 
 const DEFAULT_CONFIG = {
-  proceedTimer: 15,
+  proceedTimer: 15, // sec
+  browsingPeriod: 15, // min
   proceedCount: 0,
   fuckItCount: 0,
   shownCount: 0,

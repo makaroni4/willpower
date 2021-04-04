@@ -26,6 +26,7 @@ export default {
   appearance: none;
 
   font-family: "Muli", sans-serif;
+  line-height: 1.5 !important;
   transition: all .4s ease;
 
   &::placeholder {

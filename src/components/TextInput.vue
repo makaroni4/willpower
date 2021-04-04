@@ -29,6 +29,7 @@ export default {
   outline: none;
 
   font-family: "Muli", sans-serif;
+  line-height: 1.5 !important;
 
   appearance: none;
   transition: all .4s ease;

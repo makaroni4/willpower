@@ -45,7 +45,7 @@ export default {
   text-align: center;
   text-transform: uppercase !important;
   color: $white;
-  font-size: 12px !important;
+  font-size: 15px !important;
   line-height: 1.5 !important;
   font-weight: 400 !important;
   letter-spacing: $px1 !important;
