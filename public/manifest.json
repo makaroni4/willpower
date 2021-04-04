@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Willpower",
   "description": "Browser Extension that helps you stay focused",
-  "version": "1.0",
+  "version": "1.1",
   "author": "Anatoli Makarevich",
   "icons": {
     "128": "extension_icon.png"
@@ -24,11 +24,7 @@
   ],
   "permissions": [
     "storage",
-    "activeTab",
     "scripting"
-  ],
-  "host_permissions": [
-    "https://*/*"
   ],
   "action": {
     "default_popup": "popup.html",

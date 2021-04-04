@@ -183,32 +183,6 @@ export default {
 </script>
 
 <style lang="scss">
-@keyframes breathing {
-  0% {
-    -webkit-transform: scale(0.9);
-    -ms-transform: scale(0.9);
-    transform: scale(0.9);
-  }
-
-  25% {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
-  }
-
-  60% {
-    -webkit-transform: scale(0.9);
-    -ms-transform: scale(0.9);
-    transform: scale(0.9);
-  }
-
-  100% {
-    -webkit-transform: scale(0.9);
-    -ms-transform: scale(0.9);
-    transform: scale(0.9);
-  }
-}
-
 .oh-really-popup {
   $root: &;
 
@@ -222,7 +196,7 @@ export default {
 
   border-radius: 0 0 8px 0;
 
-  background-color: $grey-9;
+  background-color: $grey-10;
 
   font-family: "Muli", sans-serif;
   color: $grey-1;
