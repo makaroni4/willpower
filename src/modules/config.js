@@ -12,6 +12,7 @@ const DEFAULT_CONFIG = {
   redirectUrl: 'https://giphy.com/search/you-did-it',
   timerCopy: 'You still have a chance to win this!',
   patterns: [],
+  activePatterns: {},
 };
 
 export const readConfigValue = (config, value) => config[value] || DEFAULT_CONFIG[value];

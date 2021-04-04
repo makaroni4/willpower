@@ -29,7 +29,7 @@ const showScreenWall = (data, matchedPattern) => {
   }).$mount('#oh-really-mega-app');
 };
 
-readConfig(data => {
+readConfig((data) => {
   const patterns = (data.patterns || []).map((p) => p.value.replaceAll('.', '\\.').replaceAll('*', '.*'));
 
   const matchedPattern = patterns.find((pattern) => {

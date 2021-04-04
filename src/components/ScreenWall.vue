@@ -144,16 +144,16 @@ export default {
           writeData({
             proceedCount: this.proceedCount + 1,
           }, () => {
-            this.$destroy();
-            this.$el.parentNode.removeChild(this.$el);
-
             readConfig((data) => {
               const activePatterns = data.activePatterns || {};
-              const now = new Date();
-              activePatterns[this.pattern] = now.getTime();
+              const now = (new Date()).getTime();
+              activePatterns[this.pattern] = now;
 
               writeData({
                 activePatterns,
+              }, () => {
+                this.$destroy();
+                this.$el.parentNode.removeChild(this.$el);
               });
             });
           });
