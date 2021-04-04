@@ -62,6 +62,7 @@ export default {
   }
 
   &--long {
+    max-width: $px320;
     padding: 8px;
 
     line-height: 1.3;

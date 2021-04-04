@@ -112,19 +112,12 @@
           </div>
 
           <div class="oh-really-settings__input">
-            <label>Proceed button copy</label>
-            <Input
-              v-model="proceedButtonCopy" />
-            </div>
+            <label class="oh-really-settings__label">
+              <div class="oh-really-settings__label-container">
+                Screenwall quote
+              </div>
+            </label>
 
-          <div class="oh-really-settings__input">
-            <label>Close website button copy</label>
-            <Input
-              v-model="fuckItButtonCopy" />
-          </div>
-
-          <div class="oh-really-settings__input">
-            <label>Screen wall quote</label>
             <Textarea
               v-model="screenWallQuote" />
 
@@ -135,7 +128,41 @@
           </div>
 
           <div class="oh-really-settings__input">
-            <label>Timer copy</label>
+            <label class="oh-really-settings__label">
+              <div class="oh-really-settings__label-container">
+                Skip screenwall link copy
+              </div>
+            </label>
+
+            <Input
+              v-model="proceedButtonCopy" />
+          </div>
+
+          <div class="oh-really-settings__input">
+            <label class="oh-really-settings__label">
+              <div class="oh-really-settings__label-container">
+                Close website button copy
+              </div>
+            </label>
+
+            <Input
+              v-model="fuckItButtonCopy" />
+          </div>
+
+          <div class="oh-really-settings__input">
+            <label class="oh-really-settings__label">
+              <div class="oh-really-settings__label-container">
+                Breating timer copy
+
+                <InfoIcon
+                  :class="'oh-really-settings__input-info-icon'" />
+
+                <Tooltip
+                  :modifiers="['long']"
+                  :copy="'Customize a copy that is shown after breating timer is on.'" />
+              </div>
+            </label>
+
             <Textarea
               v-model="timerCopy" />
 
@@ -146,13 +173,39 @@
           </div>
 
           <div class="oh-really-settings__input">
-            <label>Redirect URL</label>
+            <label class="oh-really-settings__label">
+              <div class="oh-really-settings__label-container">
+                Redirect URL
+
+                <InfoIcon
+                  :class="'oh-really-settings__input-info-icon'" />
+
+                <Tooltip
+                  :modifiers="['long']"
+                  :copy="'For security reasons Willpower extension can\'t close the tab.\
+                    Provide a URL you\'ll be redireted to after you close the website.'" />
+              </div>
+            </label>
+
             <Input
               v-model="redirectUrl" />
           </div>
 
           <div class="oh-really-settings__input">
-            <label>Allowed browsing period, min</label>
+            <label class="oh-really-settings__label">
+              <div class="oh-really-settings__label-container">
+                Allowed browsing period, min
+
+                <InfoIcon
+                  :class="'oh-really-settings__input-info-icon'" />
+
+                <Tooltip
+                  :modifiers="['long']"
+                  :copy="'When you skip the screenwall, Willpower won\'t show it \
+                    again for a default period of 15 minutes. Feel free to customize it.'" />
+              </div>
+            </label>
+
             <Input
               :type="'number'"
               v-model="browsingPeriod" />
@@ -174,6 +227,13 @@
     </transition>
 
     <div class="oh-really-settings__menu">
+      <a
+        class="font-small"
+        target="_blank"
+        href="https://twitter.com/makaroni4">
+        <strong>Say hi</strong>
+      </a>
+
       <a
         class="font-small"
         target="_blank"
@@ -415,7 +475,7 @@ export default {
     background-color: $grey-9;
 
     font-weight: 800;
-    color: $grey-3;
+    color: $grey-5;
 
     cursor: pointer;
 
@@ -433,6 +493,8 @@ export default {
       border-radius: $px8 $px8 0 0;
 
       background-color: $grey-10;
+
+      color: $grey-3;
 
       &:hover {
         top: 0;
