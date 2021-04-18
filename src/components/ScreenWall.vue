@@ -38,10 +38,10 @@
 
     <div class="oh-really-popup__menu">
       <a
-        target="_blank"
         class="font-small"
-        :href="optionsPageUrl">
-        Settings
+        target="_blank"
+        href="https://chrome.google.com/webstore/detail/willpower/codkcdmdmljjhncjfkfgjbmiglcfpdgc">
+        Rate it
       </a>
 
       <a

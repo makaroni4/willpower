@@ -230,6 +230,13 @@
       <a
         class="font-small"
         target="_blank"
+        href="https://chrome.google.com/webstore/detail/willpower/codkcdmdmljjhncjfkfgjbmiglcfpdgc">
+        <strong>Rate it</strong>
+      </a>
+
+      <a
+        class="font-small"
+        target="_blank"
         href="https://twitter.com/makaroni4">
         <strong>Say hi</strong>
       </a>
