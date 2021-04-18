@@ -322,7 +322,7 @@ export default {
         }, 3000);
       });
     },
-    refreshSettings() {
+    refreshSettings(callback) {
       readConfig((results) => {
         this.patterns = readConfigValue(results, 'patterns');
         this.proceedTimer = readConfigValue(results, 'proceedTimer');
@@ -332,11 +332,19 @@ export default {
         this.timerCopy = readConfigValue(results, 'timerCopy');
         this.redirectUrl = readConfigValue(results, 'redirectUrl');
         this.browsingPeriod = readConfigValue(results, 'browsingPeriod');
+
+        if (callback) {
+          callback();
+        }
       });
     },
   },
   mounted() {
-    this.refreshSettings();
+    this.refreshSettings(() => {
+      if (this.patterns.length === 0) {
+        this.addPattern();
+      }
+    });
   },
 };
 </script>
@@ -513,14 +521,14 @@ export default {
   &__add-pattern {
     display: flex;
     align-items: center;
-    padding: $px4 $px12;
+    padding: $px4 $px8;
 
     border-radius: $px16;
     border: 0;
     outline: none;
     appearance: none;
 
-    background-color: $grey-10;
+    background-color: $grey-9;
 
     font-size: $px12 !important;
     line-height: 1;
@@ -528,7 +536,9 @@ export default {
     cursor: pointer;
 
     &:hover {
-      background-color: $grey-9;
+      background-color: $grey-8;
+
+      transform: scale(1.02);
     }
   }
 
