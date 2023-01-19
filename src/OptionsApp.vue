@@ -53,6 +53,13 @@
               any sequence of characters. For example, <strong>google.com*NBA</strong>
               will block any page on Goolge if a URL contains "NBA".
             </p>
+
+            <p>
+              You can use an exclamation mark <strong>!</strong> to whitelist
+              a specific URL. For example, <strong>!reddit.com/r/ProgrammerHumor</strong>
+              will allow accesses to <strong>reddit.com/r/ProgrammerHumor</strong> even if another rule
+              blocks <strong>reddit.com</strong>.
+            </p>
           </div>
 
           <div
