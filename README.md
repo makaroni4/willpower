@@ -11,6 +11,7 @@
 * motivational quote
 * buttons copy
 * redirect destination after decided to close a website
+* whitelist specific URL's and subdomains
 
 :bar_chart: **Willpower** stores its data in your Chrome browser storage. Besides default config parameters :point_up: it also keeps track of how many times you visited or skipped blocked pages.
 

@@ -32,13 +32,22 @@ const showScreenWall = (data, matchedPattern) => {
 readConfig((data) => {
   const patterns = (data.patterns || []).map((p) => p.value.replaceAll('.', '\\.').replaceAll('*', '.*'));
 
+  // Whitelists are patterns that begin with ! (exclamation mark)
+  const whitelists = patterns.filter((p) => p.startsWith('!')).map((p) => p.replace('!', ''));
+
   const matchedPattern = patterns.find((pattern) => {
     const regex = new RegExp(pattern);
 
     return regex.test(window.location.href);
   });
 
-  if (matchedPattern) {
+  const matchedWhitelist = whitelists.find((pattern) => {
+    const regex = new RegExp(pattern);
+
+    return regex.test(window.location.href);
+  });
+
+  if (matchedPattern && !matchedWhitelist) {
     const activePatterns = data.activePatterns || {};
     let activeAt = activePatterns[matchedPattern];
 
